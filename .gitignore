@@ -7,3 +7,6 @@ local.properties
 .cxx/
 # Built by scripts/build-llama-xcframework.sh (≈60 MB) until it is hosted as a release asset.
 third_party/*.zip
+__pycache__/
+# Written as a run happens; the .json beside it is the complete record.
+spike/results/*.jsonl
