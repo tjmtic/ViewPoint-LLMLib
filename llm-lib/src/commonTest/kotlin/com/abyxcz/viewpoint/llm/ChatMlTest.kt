@@ -3,7 +3,9 @@ package com.abyxcz.viewpoint.llm
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-/** The exact text MiniCPM5's own template renders for one turn (checked against llama-cli --jinja). */
+/**
+ * The exact text MiniCPM5's own template renders for one turn (checked against llama-cli --jinja).
+ */
 class ChatMlTest {
 
     @Test

@@ -36,9 +36,9 @@ class LlmException(message: String) : RuntimeException(message)
 /**
  * One loaded GGUF model and its context, backed by llama.cpp through the lm_shim C shim.
  *
- * Not thread-safe: run one generation at a time and collect it to completion or cancel it
- * before starting the next (starting a new one discards an unfinished one). The prompt is
- * passed as-is: format it for the model's chat template first.
+ * Not thread-safe: run one generation at a time and collect it to completion or cancel it before
+ * starting the next (starting a new one discards an unfinished one). The prompt is passed as-is:
+ * format it for the model's chat template first.
  */
 class LlmSession private constructor(private val native: NativeLlm) : AutoCloseable {
 
@@ -52,26 +52,25 @@ class LlmSession private constructor(private val native: NativeLlm) : AutoClosea
     fun countTokens(text: String): Int = live().countTokens(text)
 
     /**
-     * Generates a continuation of [prompt] as pieces of UTF-8 text. A piece never ends inside
-     * a character. Each piece costs one model step, so the flow runs on [dispatcher].
-     * Cancelling the collector stops generation after the current token.
+     * Generates a continuation of [prompt] as pieces of UTF-8 text. A piece never ends inside a
+     * character. Each piece costs one model step, so the flow runs on [dispatcher]. Cancelling the
+     * collector stops generation after the current token.
      */
     fun generate(
         prompt: String,
         sampling: Sampling = Sampling(),
         dispatcher: CoroutineDispatcher = Dispatchers.Default,
-    ): Flow<String> =
-        flow {
-                val llm = live()
-                llm.prompt(prompt, sampling)
-                while (true) {
-                    val piece = llm.nextPiece()
-                    if (piece.isEmpty()) break
-                    emit(piece)
-                }
-                llm.error().takeIf { it.isNotEmpty() }?.let { throw LlmException(it) }
-            }
-            .flowOn(dispatcher)
+    ): Flow<String> = flow {
+        val llm = live()
+        llm.prompt(prompt, sampling)
+        while (true) {
+            val piece = llm.nextPiece()
+            if (piece.isEmpty()) break
+            emit(piece)
+        }
+        llm.error().takeIf { it.isNotEmpty() }?.let { throw LlmException(it) }
+    }
+        .flowOn(dispatcher)
 
     override fun close() {
         if (closed) return
@@ -85,7 +84,10 @@ class LlmSession private constructor(private val native: NativeLlm) : AutoClosea
     }
 
     companion object {
-        /** Loads the model at [modelPath]. Blocking and slow for large models: call off the main thread. */
+        /**
+         * Loads the model at [modelPath]. Blocking and slow for large models: call off the main
+         * thread.
+         */
         fun load(modelPath: String, config: LlmConfig = LlmConfig()): LlmSession =
             LlmSession(NativeLlm.load(modelPath, config))
     }

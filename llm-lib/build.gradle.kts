@@ -11,6 +11,7 @@ plugins {
 }
 
 group = "com.abyxcz.viewpoint.llm"
+
 // Tag-driven: CI passes -PlibVersion from the vX.Y.Z tag; default is the current release.
 version = (project.findProperty("libVersion") as String?) ?: "0.1.0"
 
@@ -29,7 +30,12 @@ val llama =
                 url =
                     providers
                         .gradleProperty("llama.xcframework.url")
-                        .getOrElse(rootProject.file("third_party/llama-$llamaTag-xcframework-ios.zip").toURI().toString()),
+                        .getOrElse(
+                            rootProject
+                                .file("third_party/llama-$llamaTag-xcframework-ios.zip")
+                                .toURI()
+                                .toString()
+                        ),
                 sha256 = "1bdb727edea331a818ad67a0a0893aed55891dd545418a6db0e6fb4363b91504",
                 name = "llama",
             )
@@ -98,7 +104,9 @@ kotlin {
 
         // The shim as a per-target static archive (CBindingKMP pattern 1).
         val compileShim =
-            tasks.register<Exec>("compileLmShim${target.name.replaceFirstChar { it.uppercase() }}") {
+            tasks.register<Exec>(
+                "compileLmShim${target.name.replaceFirstChar { it.uppercase() }}"
+            ) {
                 dependsOn(llama.iosFetchTaskName)
                 val src = file("native/src")
                 val include = file("native/include")
@@ -106,7 +114,8 @@ kotlin {
                 inputs.dir(include)
                 outputs.dir(libDir)
                 val out = libDir.get().asFile
-                val cc = "xcrun --sdk $sdk clang -target $triple -O2 -std=c11 -I\"$include\" -I\"$src\" -I\"$llamaHeaders\""
+                val cc =
+                    "xcrun --sdk $sdk clang -target $triple -O2 -std=c11 -I\"$include\" -I\"$src\" -I\"$llamaHeaders\""
                 commandLine(
                     "bash",
                     "-c",
@@ -125,7 +134,9 @@ kotlin {
                 extraOpts("-libraryPath", libDir.get().asFile.absolutePath)
             }
         }
-        tasks.named("cinteropLmshim${target.name.replaceFirstChar { it.uppercase() }}") { dependsOn(compileShim) }
+        tasks.named("cinteropLmshim${target.name.replaceFirstChar { it.uppercase() }}") {
+            dependsOn(compileShim)
+        }
     }
 
     sourceSets {
@@ -146,7 +157,8 @@ kotlin {
 // environment (simctl forwards only SIMCTL_CHILD_-prefixed variables).
 tasks.withType<KotlinNativeSimulatorTest>().configureEach {
     dependsOn(fetchTestModel)
-    val model = fetchTestModel.flatMap { it.outputDir.file("stories260K.gguf") }.get().asFile.absolutePath
+    val model =
+        fetchTestModel.flatMap { it.outputDir.file("stories260K.gguf") }.get().asFile.absolutePath
     environment("SIMCTL_CHILD_LM_TEST_MODEL", model)
     environment("LM_TEST_MODEL", model)
 }
@@ -169,7 +181,10 @@ android {
 // The test model ships inside the instrumented-test APK as an asset.
 androidComponents {
     onVariants { variant ->
-        variant.androidTest?.sources?.assets?.addGeneratedSourceDirectory(fetchTestModel, FetchTestModel::outputDir)
+        variant.androidTest
+            ?.sources
+            ?.assets
+            ?.addGeneratedSourceDirectory(fetchTestModel, FetchTestModel::outputDir)
     }
 }
 
@@ -179,8 +194,16 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/tjmtic/ViewPoint-LLMLib")
             credentials {
-                username = System.getenv("GITHUB_ACTOR") ?: System.getenv("GPR_USER") ?: findProperty("gpr.user") as String? ?: ""
-                password = System.getenv("GITHUB_TOKEN") ?: System.getenv("GPR_KEY") ?: findProperty("gpr.key") as String? ?: ""
+                username =
+                    System.getenv("GITHUB_ACTOR")
+                        ?: System.getenv("GPR_USER")
+                        ?: findProperty("gpr.user") as String?
+                        ?: ""
+                password =
+                    System.getenv("GITHUB_TOKEN")
+                        ?: System.getenv("GPR_KEY")
+                        ?: findProperty("gpr.key") as String?
+                        ?: ""
             }
         }
     }

@@ -1,0 +1,3 @@
+# Layered on detekt's default config (buildUponDefaultConfig). Zero issues, no baseline.
+build:
+  maxIssues: 0

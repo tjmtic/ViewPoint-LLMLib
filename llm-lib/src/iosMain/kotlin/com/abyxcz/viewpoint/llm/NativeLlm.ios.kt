@@ -1,8 +1,8 @@
 package com.abyxcz.viewpoint.llm
 
+import cnames.structs.lm_ctx
 import com.abyxcz.viewpoint.llm.cinterop.lm_context_size
 import com.abyxcz.viewpoint.llm.cinterop.lm_count_tokens
-import cnames.structs.lm_ctx
 import com.abyxcz.viewpoint.llm.cinterop.lm_error
 import com.abyxcz.viewpoint.llm.cinterop.lm_free
 import com.abyxcz.viewpoint.llm.cinterop.lm_load
@@ -28,7 +28,15 @@ internal actual class NativeLlm private constructor(private var handle: CPointer
     actual fun countTokens(text: String): Int = lm_count_tokens(ctx(), text)
 
     actual fun prompt(text: String, sampling: Sampling) {
-        val rc = lm_prompt(ctx(), text, sampling.maxTokens, sampling.temperature, sampling.topP, sampling.seed)
+        val rc =
+            lm_prompt(
+                ctx(),
+                text,
+                sampling.maxTokens,
+                sampling.temperature,
+                sampling.topP,
+                sampling.seed,
+            )
         if (rc != 0) throw LlmException(error())
     }
 
@@ -43,8 +51,9 @@ internal actual class NativeLlm private constructor(private var handle: CPointer
 
     actual companion object {
         actual fun load(path: String, config: LlmConfig): NativeLlm {
-            val handle = lm_load(path, config.contextTokens, config.threads, config.gpuLayers)
-                ?: throw LlmException(readOut { buf, cap -> lm_load_error(buf, cap) })
+            val handle =
+                lm_load(path, config.contextTokens, config.threads, config.gpuLayers)
+                    ?: throw LlmException(readOut { buf, cap -> lm_load_error(buf, cap) })
             return NativeLlm(handle)
         }
     }
