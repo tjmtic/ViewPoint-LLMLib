@@ -1,5 +1,7 @@
 # ViewPoint-LLMLib
 
+[![CI](https://github.com/tjmtic/ViewPoint-LLMLib/actions/workflows/ci.yml/badge.svg)](https://github.com/tjmtic/ViewPoint-LLMLib/actions/workflows/ci.yml)
+
 On-device LLM inference for Kotlin Multiplatform (Android + iOS): llama.cpp behind a small C
 shim, bound with [CBindingKMP](https://github.com/tjmtic/CBindingKMP). First consumer:
 Starpoints' fact-sheet features (the app computes every fact; the model only narrates or
@@ -47,8 +49,10 @@ Pinned to tag `b11165` everywhere, via `cbinding.prebuilt("llama")` in `llm-lib/
 - **iOS**: `llama.xcframework` with `ios-arm64` and `ios-arm64_x86_64-simulator`, built from the
   same tag by `scripts/build-llama-xcframework.sh` — the release asset has no simulator slice.
   It is a **dynamic** framework (min iOS 16.4): an app must link and **embed** it in Xcode.
-  Until it is hosted as a release asset the zip is read from `third_party/` (gitignored);
-  `-Pllama.xcframework.url=…` overrides. The sha256 in the build file pins that exact zip.
+  Hosted as the [`llama-b11165-ios`](https://github.com/tjmtic/ViewPoint-LLMLib/releases/tag/llama-b11165-ios)
+  release asset; the sha256 in the build file pins that exact zip. Rebuilding produces a
+  different hash, so a rebuilt zip is a new release plus a new pin (`-Pllama.xcframework.url=…`
+  overrides for local experiments).
 
 `n_gpu_layers = 0` (the default) initialises no GPU backend at all; Metal cannot create a
 command queue in a headless simulator test.

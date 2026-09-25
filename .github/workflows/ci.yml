@@ -1,0 +1,91 @@
+name: CI
+
+# CBindingKMP is checked out beside this repo (the composite-build layout the settings file
+# looks for), so no package token is needed. Order: cheapest and most informative first.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ViewPoint-LLMLib }
+      - uses: actions/checkout@v4
+        with: { repository: tjmtic/CBindingKMP, path: CBindingKMP }
+      - uses: actions/setup-java@v4
+        with: { java-version: '17', distribution: temurin }
+      - uses: gradle/actions/setup-gradle@v4
+      - name: ktfmt + detekt
+        working-directory: ViewPoint-LLMLib
+        run: ./gradlew ktfmtCheck detekt --console=plain
+
+  host-tests:
+    # The shim + llama.cpp built for the runner; UTF-8 splitter and the shim's contract.
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: C tests (stories260K)
+        run: scripts/host-test.sh
+
+  ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ViewPoint-LLMLib }
+      - uses: actions/checkout@v4
+        with: { repository: tjmtic/CBindingKMP, path: CBindingKMP }
+      - uses: actions/setup-java@v4
+        with: { java-version: '17', distribution: temurin }
+      - uses: gradle/actions/setup-gradle@v4
+      - name: iOS simulator tests (real inference)
+        working-directory: ViewPoint-LLMLib
+        run: ./gradlew :llm-lib:iosSimulatorArm64Test --console=plain
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ViewPoint-LLMLib }
+      - uses: actions/checkout@v4
+        with: { repository: tjmtic/CBindingKMP, path: CBindingKMP }
+      - uses: actions/setup-java@v4
+        with: { java-version: '17', distribution: temurin }
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build (llama.cpp for arm64-v8a + x86_64)
+        working-directory: ViewPoint-LLMLib
+        run: ./gradlew :llm-lib:assembleDebug :llm-lib:assembleRelease --console=plain
+
+  android-instrumented:
+    # x86_64 emulator: the ABI the Mac's arm64 emulator never exercises.
+    runs-on: ubuntu-latest
+    needs: android
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ViewPoint-LLMLib }
+      - uses: actions/checkout@v4
+        with: { repository: tjmtic/CBindingKMP, path: CBindingKMP }
+      - uses: actions/setup-java@v4
+        with: { java-version: '17', distribution: temurin }
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Instrumented tests (real inference)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          working-directory: ViewPoint-LLMLib
+          script: ./gradlew :llm-lib:connectedDebugAndroidTest --console=plain

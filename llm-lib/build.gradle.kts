@@ -23,19 +23,17 @@ val llamaTag = "b11165"
 val llama =
     cbinding.prebuilt("llama") {
         ios {
-            // Built from the same tag by scripts/build-llama-xcframework.sh: the release
-            // asset (llama-<tag>-xcframework.zip) has no simulator slice. Dynamic framework.
-            // Until the zip is hosted as a release asset, it is read from third_party/;
-            // -Pllama.xcframework.url overrides.
+            // Built from the same tag by scripts/build-llama-xcframework.sh — ggml-org's release
+            // asset has no simulator slice — and hosted as this repo's release asset.
+            // Dynamic framework. -Pllama.xcframework.url overrides (e.g. a fresh local build:
+            // file:///…/third_party/llama-b11165-xcframework-ios.zip, with its own sha256).
             xcframework(
                 url =
                     providers
                         .gradleProperty("llama.xcframework.url")
                         .getOrElse(
-                            rootProject
-                                .file("third_party/llama-$llamaTag-xcframework-ios.zip")
-                                .toURI()
-                                .toString()
+                            "https://github.com/tjmtic/ViewPoint-LLMLib/releases/download/" +
+                                "llama-$llamaTag-ios/llama-$llamaTag-xcframework-ios.zip"
                         ),
                 sha256 = "1bdb727edea331a818ad67a0a0893aed55891dd545418a6db0e6fb4363b91504",
                 name = "llama",
