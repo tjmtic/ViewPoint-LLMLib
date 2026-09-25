@@ -59,9 +59,12 @@ internal actual class NativeLlm private constructor(private var handle: CPointer
     }
 }
 
+/** First out-buffer size; the shim reports the size it needs and the call is retried once. */
+private const val FIRST_BUFFER_BYTES = 256
+
 @OptIn(ExperimentalForeignApi::class)
 private inline fun readOut(call: (CPointer<ByteVar>, Int) -> Int): String = memScoped {
-    var cap = 256
+    var cap = FIRST_BUFFER_BYTES
     var buf = allocArray<ByteVar>(cap)
     var n = call(buf, cap)
     if (n < 0) {
