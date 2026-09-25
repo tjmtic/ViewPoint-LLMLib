@@ -10,3 +10,5 @@ third_party/*.zip
 __pycache__/
 # Written as a run happens; the .json beside it is the complete record.
 spike/results/*.jsonl
+# Fetched by the sample's asset pack at build time.
+samples/modelpack/src/main/assets/models/

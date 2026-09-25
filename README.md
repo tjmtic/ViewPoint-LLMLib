@@ -42,9 +42,25 @@ val llm = LlmSession.loadAsset(context, "models/MiniCPM5-1B-Q4_K_M.gguf", LlmCon
 ```
 
 The weights are memory-mapped when their data lands 32-byte aligned inside the APK and are
-read into memory otherwise. AGP aligns uncompressed assets only to 4 bytes, so either can happen
-(this repo's test APK lands 16 bytes off and takes the copy path). Output is identical; the
-copy costs load time and ~model-size of private memory. `llm.isMemoryMapped` says which.
+read into memory otherwise. **For an install-time pack, plan on the copy.** Measured with
+`samples/` (bundletool 1.18.3, the tool Play builds install APKs with): the pack APK holds the
+compressed pack manifest and then the model, so the model's offset moves with the manifest's
+compressed size — which changes with every versionCode — and it landed 16 bytes off. Output is
+identical; the copy costs load time and model-size of private memory (native heap grew by the
+model's 19 MB in the sample; 656 MB for MiniCPM5-1B). `llm.isMemoryMapped` says which.
+
+`samples/android` + `samples/modelpack` are the reference setup: an install-time pack holding
+the model, `noCompress += "gguf"`, and `loadAsset`. To run it as Play would install it:
+
+```bash
+./gradlew :samples:android:bundleRelease
+```
+
+```bash
+java -jar bundletool-all.jar build-apks --bundle=samples/android/build/outputs/bundle/release/android-release.aab --output=sample.apks --local-testing --connected-device --ks=$HOME/.android/debug.keystore --ks-key-alias=androiddebugkey --ks-pass=pass:android && java -jar bundletool-all.jar install-apks --apks=sample.apks
+```
+
+The app logs `mapped=… loadMs=… genMs=… text=…` under the `LlmSample` tag.
 
 **iOS.** Add the `.gguf` to the app target's Copy Bundle Resources; a bundle resource is an
 ordinary file, so it is always memory-mapped. The App Store allows 4 GB; above 200 MB users on
