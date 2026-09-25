@@ -176,6 +176,8 @@ android {
         ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
     }
     externalNativeBuild { cmake { path = file("native/CMakeLists.txt") } }
+    // Models ship as assets and are read in place by llama.cpp: they must be stored uncompressed.
+    androidResources { noCompress += "gguf" }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

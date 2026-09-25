@@ -4,6 +4,8 @@ import com.abyxcz.viewpoint.llm.generated.lm_context_sizeJNI
 import com.abyxcz.viewpoint.llm.generated.lm_count_tokensJNI
 import com.abyxcz.viewpoint.llm.generated.lm_errorJNI
 import com.abyxcz.viewpoint.llm.generated.lm_freeJNI
+import com.abyxcz.viewpoint.llm.generated.lm_is_mappedJNI
+import com.abyxcz.viewpoint.llm.generated.lm_load_fdJNI
 import com.abyxcz.viewpoint.llm.generated.lm_load_errorJNI
 import com.abyxcz.viewpoint.llm.generated.lm_loadJNI
 import com.abyxcz.viewpoint.llm.generated.lm_next_tokenJNI
@@ -15,6 +17,8 @@ import com.abyxcz.viewpoint.llm.generated.lm_set_grammarJNI
 internal actual class NativeLlm private constructor(private var handle: Long) {
 
     actual fun contextSize(): Int = lm_context_sizeJNI(handle)
+
+    actual fun mapped(): Boolean = lm_is_mappedJNI(handle) != 0
 
     actual fun countTokens(text: String): Int = lm_count_tokensJNI(handle, text)
 
@@ -44,6 +48,14 @@ internal actual class NativeLlm private constructor(private var handle: Long) {
         actual fun load(path: String, config: LlmConfig): NativeLlm {
             loaded
             val handle = lm_loadJNI(path, config.contextTokens, config.threads, config.gpuLayers)
+            if (handle == 0L) throw LlmException(lm_load_errorJNI())
+            return NativeLlm(handle)
+        }
+
+        /** A GGUF starting at [offset] of an open file (an uncompressed asset). fd is dup'ed. */
+        fun loadFd(fd: Int, offset: Long, config: LlmConfig): NativeLlm {
+            loaded
+            val handle = lm_load_fdJNI(fd, offset, config.contextTokens, config.threads, config.gpuLayers)
             if (handle == 0L) throw LlmException(lm_load_errorJNI())
             return NativeLlm(handle)
         }

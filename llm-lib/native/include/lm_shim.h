@@ -34,7 +34,19 @@ typedef struct lm_ctx lm_ctx;
  */
 lm_ctx* lm_load(const char* model_path, int32_t n_ctx, int32_t n_threads, int32_t n_gpu_layers);
 
-/* Why the last lm_load on this thread failed; 0 bytes if it did not. */
+/*
+ * Loads a GGUF that starts at byte `offset` of an open file: an uncompressed Android asset
+ * (AssetFileDescriptor: its fd and startOffset), or any container. fd is duplicated, so the
+ * caller can close theirs afterwards. The weights are memory-mapped in place when the data
+ * section lands 32-byte aligned in the file, and read into memory otherwise (slower to load,
+ * more private memory, same results): see lm_is_mapped. Errors as for lm_load.
+ */
+lm_ctx* lm_load_fd(int32_t fd, int64_t offset, int32_t n_ctx, int32_t n_threads, int32_t n_gpu_layers);
+
+/* 1 when the weights are memory-mapped from the file, 0 when they were copied into memory. */
+int32_t lm_is_mapped(lm_ctx* ctx);
+
+/* Why the last lm_load / lm_load_fd on this thread failed; 0 bytes if it did not. */
 int32_t lm_load_error(char* out, int32_t cap);
 
 /* Tokens in text, without BOS/EOS; special tokens such as <|im_start|> count as one. -1 on failure. */

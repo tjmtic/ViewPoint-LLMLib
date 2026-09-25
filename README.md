@@ -25,6 +25,37 @@ LlmSession.load(modelPath, LlmConfig(contextTokens = 2048)).use { llm ->
   `ChatMl.MiniCpm5.prompt(user, system, thinking = false)`. MiniCPM5 needs the literal `<s>`
   its template writes (its tokenizer adds no BOS); without it the model emits newlines or loops.
 
+## Shipping the model in the app
+
+The model ships inside the app, not downloaded after install. MiniCPM5-1B Q4_K_M is 656 MB.
+
+**Android.** Google Play caps the base module at 500 MB and a single asset pack at 1.5 GB, so
+put the `.gguf` in an **install-time asset pack** (Play Asset Delivery). It arrives with the
+install, it is read through `AssetManager`, and install-time packs plus modules may total 4 GB.
+Store it uncompressed, and load it in place — no copy on disk:
+
+```kotlin
+// the module holding the asset
+android { androidResources { noCompress += "gguf" } }
+
+val llm = LlmSession.loadAsset(context, "models/MiniCPM5-1B-Q4_K_M.gguf", LlmConfig(contextTokens = 2048))
+```
+
+The weights are memory-mapped when their data lands 32-byte aligned inside the APK and are
+read into memory otherwise. AGP aligns uncompressed assets only to 4 bytes, so either can happen
+(this repo's test APK lands 16 bytes off and takes the copy path). Output is identical; the
+copy costs load time and ~model-size of private memory. `llm.isMemoryMapped` says which.
+
+**iOS.** Add the `.gguf` to the app target's Copy Bundle Resources; a bundle resource is an
+ordinary file, so it is always memory-mapped. The App Store allows 4 GB; above 200 MB users on
+cellular are asked before downloading.
+
+```kotlin
+val llm = LlmSession.loadBundled("MiniCPM5-1B-Q4_K_M", config = LlmConfig(contextTokens = 2048))
+```
+
+Only one tier ships this way: bundling the 2B too would add 1.5 GB to every install.
+
 ## Layout
 
 | Path | What |

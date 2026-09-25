@@ -56,6 +56,9 @@ struct lm_ctx {
 
     char* grammar; /* GBNF applied to each generation; NULL = none */
 
+    FILE* file; /* kept open for a model loaded from a file descriptor */
+    int mapped; /* weights are memory-mapped, not copied */
+
     char error[LM_ERROR_CAP];
 };
 
@@ -107,52 +110,102 @@ static int ensure_pending(lm_ctx* c, int32_t needed) {
 
 /* ---- API ----------------------------------------------------------------------------- */
 
-lm_ctx* lm_load(const char* model_path, int32_t n_ctx, int32_t n_threads, int32_t n_gpu_layers) {
+/* Common start of every load: CPU check, one-time backend init, model parameters. */
+static int begin_load(int32_t n_gpu_layers, struct llama_model_params* mp) {
     g_load_error[0] = '\0';
     const char* unsupported = cpu_unsupported();
     if (unsupported) {
         set_error(g_load_error, "%s", unsupported);
-        return NULL;
+        return 0;
     }
     pthread_once(&g_backend_once, backend_init);
-
-    struct llama_model_params mp = llama_model_default_params();
-    mp.n_gpu_layers = n_gpu_layers;
+    *mp = llama_model_default_params();
+    mp->n_gpu_layers = n_gpu_layers;
+    /* Explicit, so lm_is_mapped states a fact rather than what AUTO decided. */
+    mp->load_mode = LLAMA_LOAD_MODE_MMAP;
     /* CPU only means no GPU device at all: with the default (all devices) llama.cpp still
      * initialises Metal for the context, which fails where no GPU queue is available (the
      * iOS simulator in a test process). An empty NULL-terminated list offloads nothing. */
     static ggml_backend_dev_t no_devices[] = {NULL};
-    if (n_gpu_layers == 0) mp.devices = no_devices;
-    struct llama_model* model = llama_model_load_from_file(model_path, mp);
-    if (!model) {
-        set_error(g_load_error, "could not load model '%s' (missing, unreadable or not GGUF)", model_path);
-        return NULL;
-    }
+    if (n_gpu_layers == 0) mp->devices = no_devices;
+    return 1;
+}
 
+/* Wraps a loaded model in a context; frees the model (and file) on failure. */
+static lm_ctx* finish_load(struct llama_model* model, FILE* file, int mapped, int32_t n_ctx,
+                           int32_t n_threads, const char* what) {
     struct llama_context_params cp = llama_context_default_params();
     cp.n_ctx = n_ctx > 0 ? (uint32_t)n_ctx : 0;
     cp.n_batch = cp.n_ctx > 0 && cp.n_ctx < 512 ? cp.n_ctx : 512;
     cp.n_threads = effective_threads(n_threads);
     cp.n_threads_batch = cp.n_threads;
     struct llama_context* ctx = llama_init_from_model(model, cp);
-    if (!ctx) {
-        llama_model_free(model);
-        set_error(g_load_error, "could not create a %d-token context for '%s' (out of memory?)", n_ctx, model_path);
-        return NULL;
-    }
-
-    lm_ctx* c = calloc(1, sizeof(lm_ctx));
+    lm_ctx* c = ctx ? calloc(1, sizeof(lm_ctx)) : NULL;
     if (!c) {
-        llama_free(ctx);
+        if (ctx) llama_free(ctx);
         llama_model_free(model);
-        set_error(g_load_error, "out of memory");
+        if (file) fclose(file);
+        set_error(g_load_error, ctx ? "out of memory" : "could not create a %d-token context for %s (out of memory?)",
+                  n_ctx, what);
         return NULL;
     }
     c->model = model;
     c->ctx = ctx;
     c->vocab = llama_model_get_vocab(model);
+    c->file = file;
+    c->mapped = mapped;
     c->done = 1;
     return c;
+}
+
+lm_ctx* lm_load(const char* model_path, int32_t n_ctx, int32_t n_threads, int32_t n_gpu_layers) {
+    struct llama_model_params mp;
+    if (!begin_load(n_gpu_layers, &mp)) return NULL;
+    struct llama_model* model = llama_model_load_from_file(model_path, mp);
+    if (!model) {
+        set_error(g_load_error, "could not load model '%s' (missing, unreadable or not GGUF)", model_path);
+        return NULL;
+    }
+    char what[300];
+    snprintf(what, sizeof what, "'%s'", model_path);
+    return finish_load(model, NULL, 1, n_ctx, n_threads, what);
+}
+
+lm_ctx* lm_load_fd(int32_t fd, int64_t offset, int32_t n_ctx, int32_t n_threads, int32_t n_gpu_layers) {
+    struct llama_model_params mp;
+    if (!begin_load(n_gpu_layers, &mp)) return NULL;
+    /* Memory-map in place when the embedded GGUF's data lands 32-byte aligned in the file;
+     * llama.cpp refuses to map otherwise, so read it into memory instead. The caller's fd
+     * is dup'ed: they may close theirs as soon as this returns. */
+    for (int attempt = 0; attempt < 2; attempt++) {
+        int copy = dup(fd);
+        FILE* file = copy >= 0 ? fdopen(copy, "rb") : NULL;
+        if (!file) {
+            if (copy >= 0) close(copy);
+            set_error(g_load_error, "file descriptor %d is not readable", fd);
+            return NULL;
+        }
+        if (fseeko(file, (off_t)offset, SEEK_SET) != 0) {
+            fclose(file);
+            set_error(g_load_error, "cannot seek to offset %lld of file descriptor %d", (long long)offset, fd);
+            return NULL;
+        }
+        mp.load_mode = attempt == 0 ? LLAMA_LOAD_MODE_MMAP : LLAMA_LOAD_MODE_NONE;
+        struct llama_model* model = llama_model_load_from_file_ptr(file, mp);
+        if (model) {
+            char what[64];
+            snprintf(what, sizeof what, "fd %d at offset %lld", fd, (long long)offset);
+            return finish_load(model, file, attempt == 0, n_ctx, n_threads, what);
+        }
+        fclose(file);
+    }
+    set_error(g_load_error, "no GGUF model at offset %lld of file descriptor %d (a compressed asset?)",
+              (long long)offset, fd);
+    return NULL;
+}
+
+int32_t lm_is_mapped(lm_ctx* c) {
+    return c->mapped ? 1 : 0;
 }
 
 int32_t lm_load_error(char* out, int32_t cap) {
@@ -333,6 +386,7 @@ void lm_free(lm_ctx* c) {
     free(c->grammar);
     llama_free(c->ctx);
     llama_model_free(c->model);
+    if (c->file) fclose(c->file);
     free(c->pending);
     free(c);
 }

@@ -4,7 +4,9 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <fcntl.h>
 #include <string.h>
+#include <unistd.h>
 
 #include "lm_shim.h"
 
@@ -121,6 +123,44 @@ int main(int argc, char** argv) {
 
     lm_free(c);
     lm_free(NULL);
+
+    /* Loading a model embedded in a larger file (an APK asset): mapped when aligned, copied
+     * when not, same output either way. */
+    FILE* src = fopen(argv[1], "rb");
+    fseek(src, 0, SEEK_END);
+    long model_size = ftell(src);
+    rewind(src);
+    char* model_bytes = malloc((size_t)model_size);
+    fread(model_bytes, 1, (size_t)model_size, src);
+    fclose(src);
+    const long offsets[] = {64, 48}; /* 48: the data section lands 16 bytes off alignment */
+    for (int k = 0; k < 2; k++) {
+        char container[] = "/tmp/lm_shim_test_container_XXXXXX";
+        int wfd = mkstemp(container);
+        char junk[64];
+        memset(junk, 0x5A, sizeof junk);
+        write(wfd, junk, (size_t)offsets[k]);
+        write(wfd, model_bytes, (size_t)model_size);
+        write(wfd, junk, sizeof junk); /* bytes after it, as in a zip */
+        close(wfd);
+        int rfd = open(container, O_RDONLY);
+        lm_ctx* e = lm_load_fd(rfd, offsets[k], 256, 2, 0);
+        close(rfd); /* the shim dup'ed it */
+        unlink(container);
+        CHECK(e != NULL, "load at offset %ld", offsets[k]);
+        if (!e) continue;
+        CHECK(lm_is_mapped(e) == (k == 0), "offset %ld: mapped %d", offsets[k], lm_is_mapped(e));
+        char out[4096];
+        int pieces;
+        int32_t len = generate(e, "Once upon a time", 24, out, sizeof out, &pieces);
+        CHECK(len == la && memcmp(out, a, (size_t)la) == 0, "offset %ld: same text as the path load", offsets[k]);
+        printf("embedded at offset %ld: %s, same output\n", offsets[k], lm_is_mapped(e) ? "mapped" : "copied");
+        lm_free(e);
+    }
+    free(model_bytes);
+    CHECK(lm_load_fd(-1, 0, 256, 1, 0) == NULL, "bad descriptor is refused");
+    mlen = lm_load_error(msg, sizeof msg);
+    CHECK(mlen > 0, "bad descriptor explains");
 
     if (failures == 0) printf("lm_shim_test: all passed\n");
     return failures == 0 ? 0 : 1;

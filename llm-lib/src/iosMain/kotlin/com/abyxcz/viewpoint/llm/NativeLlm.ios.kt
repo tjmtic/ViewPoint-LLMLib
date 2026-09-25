@@ -5,6 +5,7 @@ import com.abyxcz.viewpoint.llm.cinterop.lm_context_size
 import com.abyxcz.viewpoint.llm.cinterop.lm_count_tokens
 import com.abyxcz.viewpoint.llm.cinterop.lm_error
 import com.abyxcz.viewpoint.llm.cinterop.lm_free
+import com.abyxcz.viewpoint.llm.cinterop.lm_is_mapped
 import com.abyxcz.viewpoint.llm.cinterop.lm_load
 import com.abyxcz.viewpoint.llm.cinterop.lm_load_error
 import com.abyxcz.viewpoint.llm.cinterop.lm_next_token
@@ -25,6 +26,8 @@ internal actual class NativeLlm private constructor(private var handle: CPointer
     private fun ctx(): CPointer<lm_ctx> = checkNotNull(handle) { "closed" }
 
     actual fun contextSize(): Int = lm_context_size(ctx())
+
+    actual fun mapped(): Boolean = lm_is_mapped(ctx()) != 0
 
     actual fun countTokens(text: String): Int = lm_count_tokens(ctx(), text)
 

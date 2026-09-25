@@ -37,7 +37,7 @@ data class Sampling(
     val grammar: String? = null,
 )
 
-class LlmException(message: String) : RuntimeException(message)
+class LlmException(message: String, cause: Throwable? = null) : RuntimeException(message, cause)
 
 /**
  * One loaded GGUF model and its context, backed by llama.cpp through the lm_shim C shim.
@@ -49,6 +49,14 @@ class LlmException(message: String) : RuntimeException(message)
 class LlmSession private constructor(private val native: NativeLlm) : AutoCloseable {
 
     private var closed = false
+
+    /**
+     * True when the weights are memory-mapped from the model file (pages the OS can drop and
+     * reload), false when they were copied into memory — which happens for an Android asset whose
+     * data does not land 32-byte aligned in the APK. Same output either way.
+     */
+    val isMemoryMapped: Boolean
+        get() = live().mapped()
 
     /** Context length in tokens. */
     val contextTokens: Int
@@ -96,12 +104,17 @@ class LlmSession private constructor(private val native: NativeLlm) : AutoClosea
          */
         fun load(modelPath: String, config: LlmConfig = LlmConfig()): LlmSession =
             LlmSession(NativeLlm.load(modelPath, config))
+
+        /** For the platform loaders (bundled models): wraps an already loaded model. */
+        internal fun fromNative(native: NativeLlm): LlmSession = LlmSession(native)
     }
 }
 
 /** Platform access to the shim: JNI on Android, cinterop on iOS. */
 internal expect class NativeLlm {
     fun contextSize(): Int
+
+    fun mapped(): Boolean
 
     fun countTokens(text: String): Int
 

@@ -41,6 +41,11 @@ class LlmSessionTest {
     }
 
     @Test
+    fun aModelLoadedByPathIsMemoryMapped() {
+        assertTrue(session.isMemoryMapped)
+    }
+
+    @Test
     fun reportsContextAndTokens() {
         assertEquals(256, session.contextTokens)
         assertEquals(0, session.countTokens(""))
