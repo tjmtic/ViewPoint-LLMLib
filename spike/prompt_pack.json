@@ -1,0 +1,123 @@
+{
+ "systems": {
+  "narrate": "You are the voice of a stargazing app. Use ONLY the facts given. Do not add any number, date, distance, size or comparison that is not in the facts. Answer in at most three short sentences.",
+  "kid": "You are the voice of a stargazing app, talking to a 7-year-old. Use ONLY the facts given, in simple words. Do not add any number or comparison that is not in the facts. At most three short sentences.",
+  "intent": "You turn a stargazing request into JSON and nothing else. Reply with exactly one JSON object: {\"action\": \"find\" | \"show_time\" | \"toggle\", \"target\": string or null, \"minutes_from_now\": integer}. \"find\" points the user at an object; \"show_time\" moves the sky forward; \"toggle\" switches a display setting. target must be one of: Vega, Andromeda Galaxy, Orion, Polaris, Pleiades, constellation_lines, labels, night_mode — or null. minutes_from_now is 0 unless the request moves time.",
+  "intent_v2": "You label stargazing requests for an app. You never perform the request and never explain: the app does the work. Reply with exactly one JSON object and nothing else.\nSchema: {\"action\": \"find\" | \"show_time\" | \"toggle\", \"target\": one of Vega, Andromeda Galaxy, Orion, Polaris, Pleiades, constellation_lines, labels, night_mode, or null, \"minutes_from_now\": integer}\nfind = point the user at an object. show_time = move the sky forward (target null). toggle = switch a display setting on or off.\nExamples:\nrequest: point me at Polaris\n{\"action\": \"find\", \"target\": \"Polaris\", \"minutes_from_now\": 0}\nrequest: what's up in two hours?\n{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 120}\nrequest: hide the labels\n{\"action\": \"toggle\", \"target\": \"labels\", \"minutes_from_now\": 0}",
+  "intent_v3": "You label stargazing requests for an app. You never perform the request and never explain: the app does the work. Reply with exactly one JSON object and nothing else.\nSchema: {\"action\": \"find\" | \"advance_time\" | \"toggle\", \"target\": one of Vega, Andromeda Galaxy, Orion, Polaris, Pleiades, constellation_lines, labels, night_mode, or null, \"minutes_from_now\": integer}\nfind = point the user at an object. advance_time = move the sky forward (target null). toggle = switch a display setting on or off.\nExamples:\nrequest: point me at Polaris\n{\"action\": \"find\", \"target\": \"Polaris\", \"minutes_from_now\": 0}\nrequest: what's up in two hours?\n{\"action\": \"advance_time\", \"target\": null, \"minutes_from_now\": 120}\nrequest: hide the labels\n{\"action\": \"toggle\", \"target\": \"labels\", \"minutes_from_now\": 0}"
+ },
+ "cases": [
+  {
+   "id": "star-vega",
+   "kind": "narrate",
+   "system": "narrate",
+   "require": [
+    "Vega"
+   ],
+   "user": "FACTS\nname: Vega\nconstellation: Lyra\napparent magnitude: 0.03\ndistance: 25 light-years\nlight left the star in: 2001\naltitude now: 62 degrees, high in the east\nname origin: Arabic \"al-nasr al-waqi\", the swooping eagle\n\nTell me about the star I am pointing at."
+  },
+  {
+   "id": "dso-m31",
+   "kind": "narrate",
+   "system": "narrate",
+   "require": [
+    "Andromeda"
+   ],
+   "user": "FACTS\nname: Andromeda Galaxy (M31)\ntype: spiral galaxy\ndistance: 2.5 million light-years\napparent magnitude: 3.4\napparent size: 3 degrees across, six times the full Moon\nlight left it: 2.5 million years ago\nvisible to the eye: yes, from a dark site, as a faint smudge\n\nWhat am I looking at?"
+  },
+  {
+   "id": "const-orion",
+   "kind": "narrate",
+   "system": "narrate",
+   "require": [
+    "Orion"
+   ],
+   "user": "FACTS\nname: Orion, the Hunter\nbrightest star: Rigel, magnitude 0.13\nsecond brightest: Betelgeuse, magnitude 0.5, a red supergiant that varies in brightness\nnotable: three belt stars in a straight line\nrises tonight at: 21:40\nsize rank: 26th of 88 constellations\n\nTell me about this constellation."
+  },
+  {
+   "id": "guide-tonight",
+   "kind": "narrate",
+   "system": "narrate",
+   "user": "FACTS\nvisible now, brightest first:\n- Vega: magnitude 0.03, altitude 62 degrees\n- Andromeda Galaxy: magnitude 3.4, altitude 48 degrees, needs a dark site\n- Pleiades: magnitude 1.6, altitude 25 degrees, rising, a cluster of stars\n- Polaris: magnitude 2.0, altitude 34 degrees, marks north\nMoon: below the horizon\n\nWhat should I look at tonight? Pick two and say why, using only the facts.",
+   "require_any": [
+    "Vega",
+    "Andromeda",
+    "Pleiades",
+    "Polaris"
+   ],
+   "require_count": 2
+  },
+  {
+   "id": "kid-polaris",
+   "kind": "narrate",
+   "system": "kid",
+   "require": [
+    "Polaris"
+   ],
+   "user": "FACTS\nname: Polaris, the North Star\nfinding it: follow the two end stars of the Big Dipper's bowl\nwhy it matters: it stays in the same place all night, above north\ndistance: 430 light-years\n\nTell me about this star."
+  },
+  {
+   "id": "dso-pleiades",
+   "kind": "narrate",
+   "system": "narrate",
+   "require": [
+    "Pleiades"
+   ],
+   "user": "FACTS\nname: Pleiades (M45), the Seven Sisters\ntype: open star cluster\ndistance: 440 light-years\nstars: about 1000; about 6 visible to the eye\nconstellation: Taurus\n\nWhat is this?"
+  },
+  {
+   "id": "intent-find-m31",
+   "kind": "intent",
+   "system": "intent",
+   "expect": {
+    "action": "find",
+    "target": "Andromeda Galaxy",
+    "minutes_from_now": 0
+   },
+   "user": "where's andromeda"
+  },
+  {
+   "id": "intent-find-vega",
+   "kind": "intent",
+   "system": "intent",
+   "expect": {
+    "action": "find",
+    "target": "Vega",
+    "minutes_from_now": 0
+   },
+   "user": "show me Vega"
+  },
+  {
+   "id": "intent-time",
+   "kind": "intent",
+   "system": "intent",
+   "expect": {
+    "action": "show_time",
+    "target": null,
+    "minutes_from_now": 60
+   },
+   "user": "what will the sky look like in an hour?"
+  },
+  {
+   "id": "intent-toggle",
+   "kind": "intent",
+   "system": "intent",
+   "expect": {
+    "action": "toggle",
+    "target": "constellation_lines",
+    "minutes_from_now": 0
+   },
+   "user": "turn off the constellation lines"
+  }
+ ],
+ "intent_targets": [
+  "Vega",
+  "Andromeda Galaxy",
+  "Orion",
+  "Polaris",
+  "Pleiades",
+  "constellation_lines",
+  "labels",
+  "night_mode"
+ ]
+}

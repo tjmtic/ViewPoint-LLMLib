@@ -44,6 +44,15 @@ int32_t lm_count_tokens(lm_ctx* ctx, const char* text);
 int32_t lm_context_size(lm_ctx* ctx);
 
 /*
+ * Constrains the following generations to a GBNF grammar (llama.cpp's format, root rule
+ * "root"), e.g. a JSON object whose fields can only take listed values: output then always
+ * parses, and the model only chooses among what the grammar allows. "" removes it.
+ * Returns 0, or -1 when the grammar does not parse (reason in lm_error; the previous
+ * grammar, if any, stays).
+ */
+int32_t lm_set_grammar(lm_ctx* ctx, const char* gbnf);
+
+/*
  * Starts a generation: forgets the previous one, evaluates the prompt (already formatted
  * for the model's chat template; special tokens are parsed), and sets up sampling.
  * temperature <= 0 samples greedily (deterministic). seed < 0 picks a random seed.

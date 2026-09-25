@@ -29,6 +29,12 @@ data class Sampling(
     val topP: Float = 0.95f,
     /** Same seed + same prompt + same settings = same text. Negative = random. */
     val seed: Int = -1,
+    /**
+     * GBNF grammar (llama.cpp's format, start rule `root`) the output must match, e.g. a JSON
+     * object whose fields can only take listed values: the result always parses and the model only
+     * chooses. null = free text. A grammar that does not parse fails the generation.
+     */
+    val grammar: String? = null,
 )
 
 class LlmException(message: String) : RuntimeException(message)

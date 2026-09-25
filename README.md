@@ -14,11 +14,16 @@ LlmSession.load(modelPath, LlmConfig(contextTokens = 2048)).use { llm ->
 ```
 
 - `countTokens(text)` for prompt budgeting; `contextTokens` for the limit.
+- `Sampling(grammar = gbnf)` constrains output to a GBNF grammar: for intents, a JSON object
+  whose fields can only take listed values always parses, and the model only chooses. Costs
+  speed (the grammar is checked against the whole vocabulary), so use it for short outputs.
 - `temperature = 0` is greedy and deterministic; a fixed `seed` makes sampling reproducible.
 - Cancelling the collector stops after the current token; the next `generate` starts clean.
 - One generation at a time per session. The prompt is used as-is, so format it with
   `ChatMl.MiniCpm5.prompt(user, system, thinking = false)`. MiniCPM5 needs the literal `<s>`
   its template writes (its tokenizer adds no BOS); without it the model emits newlines or loops.
+  `ChatMl.MiniCpm4` (the 0.5B tier) is the opposite: its tokenizer adds BOS and its template has
+  no thinking block.
 
 ## Layout
 
@@ -30,6 +35,7 @@ LlmSession.load(modelPath, LlmConfig(contextTokens = 2048)).use { llm ->
 | `llm-lib/src/commonMain` | `LlmSession`, `LlmConfig`, `Sampling` |
 | `llm-lib/src/androidMain`, `iosMain` | JNI (generated wrappers) / cinterop actuals |
 | `llm-lib/src/commonTest` | Real inference against stories260K, run on the iOS simulator and on Android devices |
+| `spike/` | Starpoints prompt pack + runner scoring model tiers on fact fidelity and intents (see `spike/README.md`) |
 
 ## llama.cpp
 

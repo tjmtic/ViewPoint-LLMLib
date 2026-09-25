@@ -9,6 +9,7 @@ import com.abyxcz.viewpoint.llm.cinterop.lm_load
 import com.abyxcz.viewpoint.llm.cinterop.lm_load_error
 import com.abyxcz.viewpoint.llm.cinterop.lm_next_token
 import com.abyxcz.viewpoint.llm.cinterop.lm_prompt
+import com.abyxcz.viewpoint.llm.cinterop.lm_set_grammar
 import kotlinx.cinterop.ByteVar
 import kotlinx.cinterop.CPointer
 import kotlinx.cinterop.ExperimentalForeignApi
@@ -28,6 +29,7 @@ internal actual class NativeLlm private constructor(private var handle: CPointer
     actual fun countTokens(text: String): Int = lm_count_tokens(ctx(), text)
 
     actual fun prompt(text: String, sampling: Sampling) {
+        if (lm_set_grammar(ctx(), sampling.grammar.orEmpty()) != 0) throw LlmException(error())
         val rc =
             lm_prompt(
                 ctx(),

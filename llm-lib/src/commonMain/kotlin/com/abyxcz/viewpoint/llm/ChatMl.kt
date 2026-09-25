@@ -8,8 +8,11 @@ package com.abyxcz.viewpoint.llm
  * [bos] matters: MiniCPM5's tokenizer does not add a beginning-of-sequence token itself (`add_bos =
  * false`) — its template writes `<s>` as text. Without it the model degenerates into newlines or
  * loops. Models whose tokenizer adds BOS, or that use none, take `""`.
+ *
+ * [thinkingSwitch]: whether the template has MiniCPM5's `<think>` block. Models without one
+ * (MiniCPM4) get a plain assistant turn.
  */
-class ChatMl(val bos: String) {
+class ChatMl(val bos: String, val thinkingSwitch: Boolean = true) {
 
     /**
      * [thinking] = false renders the empty `<think></think>` block that switches reasoning off
@@ -21,11 +24,18 @@ class ChatMl(val bos: String) {
             if (system != null) append("<|im_start|>system\n").append(system).append("<|im_end|>\n")
             append("<|im_start|>user\n").append(user).append("<|im_end|>\n")
             append("<|im_start|>assistant\n")
-            append(if (thinking) "<think>\n" else "<think>\n\n</think>\n\n")
+            if (thinkingSwitch) {
+                append(if (thinking) "<think>\n" else "<think>\n\n</think>\n\n")
+            } else {
+                require(!thinking) { "this model's template has no thinking mode" }
+            }
         }
 
     companion object {
-        /** openbmb MiniCPM5 (1B, 2B). */
+        /** openbmb MiniCPM5 (1B, 2B): tokenizer adds no BOS, template writes `<s>`. */
         val MiniCpm5 = ChatMl(bos = "<s>")
+
+        /** openbmb MiniCPM4 (0.5B): tokenizer adds BOS itself; plain ChatML, no thinking. */
+        val MiniCpm4 = ChatMl(bos = "", thinkingSwitch = false)
     }
 }

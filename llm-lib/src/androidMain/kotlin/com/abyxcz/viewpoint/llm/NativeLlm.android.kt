@@ -8,6 +8,7 @@ import com.abyxcz.viewpoint.llm.generated.lm_load_errorJNI
 import com.abyxcz.viewpoint.llm.generated.lm_loadJNI
 import com.abyxcz.viewpoint.llm.generated.lm_next_tokenJNI
 import com.abyxcz.viewpoint.llm.generated.lm_promptJNI
+import com.abyxcz.viewpoint.llm.generated.lm_set_grammarJNI
 
 // Everything below goes through CBindingKMP's generated wrappers, which do the UTF-8
 // encoding, the out-buffer sizing and the decoding.
@@ -18,6 +19,9 @@ internal actual class NativeLlm private constructor(private var handle: Long) {
     actual fun countTokens(text: String): Int = lm_count_tokensJNI(handle, text)
 
     actual fun prompt(text: String, sampling: Sampling) {
+        if (lm_set_grammarJNI(handle, sampling.grammar.orEmpty()) != 0) {
+            throw LlmException(lm_errorJNI(handle))
+        }
         val rc =
             lm_promptJNI(handle, text, sampling.maxTokens, sampling.temperature, sampling.topP, sampling.seed)
         if (rc != 0) throw LlmException(lm_errorJNI(handle))

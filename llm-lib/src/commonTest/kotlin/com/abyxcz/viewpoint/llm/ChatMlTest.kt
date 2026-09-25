@@ -2,6 +2,7 @@ package com.abyxcz.viewpoint.llm
 
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 /**
  * The exact text MiniCPM5's own template renders for one turn (checked against llama-cli --jinja).
@@ -32,5 +33,14 @@ class ChatMlTest {
             "<|im_start|>user\nhi<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
             ChatMl(bos = "").prompt("hi"),
         )
+    }
+
+    @Test
+    fun miniCpm4HasNoBosTextAndNoThinkBlock() {
+        assertEquals(
+            "<|im_start|>user\nhi<|im_end|>\n<|im_start|>assistant\n",
+            ChatMl.MiniCpm4.prompt("hi"),
+        )
+        assertFailsWith<IllegalArgumentException> { ChatMl.MiniCpm4.prompt("hi", thinking = true) }
     }
 }

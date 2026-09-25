@@ -1,0 +1,3757 @@
+[
+ {
+  "model": "0.5B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "The star you are pointing at is Vega, which belongs to the constellation Lyra. Vega appears to be about 0.03 magnitudes away from Earth, and it is located approximately 25 light-years away. Its light left the star in the year 2001, and its current altitude in the east is around 62 degrees. Vega is the brightest star in the night sky and is often used as a reference point for navigation and astronomy observations.",
+  "speed": {
+   "load_s": 0.67,
+   "prompt_tokens": 153.0,
+   "prompt_tps": 503.0,
+   "gen_tokens": 103.0,
+   "gen_tps": 191.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "It is Vega, a star in the constellation Lyra. Vega appears to be about 0.03 magnitudes away from Earth, and it is relatively close to the time of observation. Its light left the star in the year 2001, and now it is positioned at an altitude of 62 degrees, high in the east. Vega is also known as the \"al-nasr al-waqi\", which means \"the eagle swooping through the stars\" in Arabic.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 153.0,
+   "prompt_tps": 1114.0,
+   "gen_tokens": 108.0,
+   "gen_tps": 202.0
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "The star you are pointing at is Vega, which belongs to the constellation Lyra. It is located approximately 25 light-years away from Earth and has an apparent magnitude of 0.03 on the star chart. Vega was originally named the eagle in Arabic.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 153.0,
+   "prompt_tps": 1111.0,
+   "gen_tokens": 59.0,
+   "gen_tps": 200.9
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "The star you are pointing at is Vega, which belongs to the constellation Lyra. Vega appears to be around 0.03 magnitudes away from Earth, and it is located approximately 25 light-years away. Its light left in the year 2001 reached its highest point, and it is now positioned at an altitude of 62 degrees north of the celestial equator. Vega originates from the Arabs, where it is called al-nasr al-waqi, meaning \"the eagle in the sky.\"",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 153.0,
+   "prompt_tps": 1067.0,
+   "gen_tokens": 119.0,
+   "gen_tps": 201.9
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Andromeda Galaxy (M31) is a spiral galaxy located about 2.5 million light-years away from Earth. Its apparent magnitude is 3.4 and it appears as a faint smudge in the sky. It has a visible size of about 3 degrees across and is about six times the size of the full Moon. The light that reaches Earth from M31 has been traveling for about 2.5 million years.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1052.0,
+   "gen_tokens": 92.0,
+   "gen_tps": 217.7
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "The information you've provided is about the Andromeda Galaxy, a spiral galaxy located about 2.5 million light-years away from Earth. Its apparent magnitude is 3.4, and it appears as a faint smudge in the sky from a dark location.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1069.0,
+   "gen_tokens": 57.0,
+   "gen_tps": 200.5
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Andromeda Galaxy (M31) is a spiral galaxy located about 2.5 million light-years away from Earth. It has a distance of 2.5 million years ago when it was when the first star formed in the Milky Way, and it is currently six times the size of the full Moon.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1068.0,
+   "gen_tokens": 66.0,
+   "gen_tps": 187.7
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Andromeda Galaxy (M31) is a spiral galaxy located about 2.5 million light-years away. It has a magnitude of 3.4 and appears as a faint smudge in the sky, measuring 3 degrees across and six times the size of a full Moon. It was last seen 2.5 million years ago and can be seen from a dark location on Earth.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1078.0,
+   "gen_tokens": 83.0,
+   "gen_tps": 205.5
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "The Orion constellation is a prominent and easily recognizable star cluster located in the northern sky. It is named after the mythological hunter Orion, whose belt of stars he is known to have seen. The cluster is named after the Roman astronomer Hiero, who observed it from a distance. Orion is one of the brightest stars in the night sky and is easily visible to the naked eye. It is composed of several bright stars that form a recognizable O-shaped pattern. The constellation is also known as the Hunter's Belt or the Belt of Orion.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 1062.0,
+   "gen_tokens": 122.0,
+   "gen_tps": 195.8
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Orion is the brightest star in the night sky and is often referred to as the Hunter. It is located in the constellation of Canis Major, which is also known as the Great Bear. Orion is a red supergiant star that has three close binary star systems around it, which were discovered in 1996. The constellation is named after the mythological hunter Orion, and it has many mythological and cultural significances, such as representing the fall of Man and the beginning of the Dust Bowl.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 794.0,
+   "gen_tokens": 111.0,
+   "gen_tps": 132.0
+  },
+  "invented": [
+   "1996"
+  ],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "The Orion constellation is a prominent belt star in the constellation of Orion, also known as the Hunter. It is the brightest star in the constellation and has a magnitude of 0.13. The second brightest star in the constellation is Betelgeuse, which has a magnitude of 0.5 and is a red supergiant that varies in brightness. The constellation of Orion is notable for the three belt stars that form a straight line in the sky, which are named after the animals that are associated with this constellation, such as the hawk, the hunter, and the eagle. The size rank of the constellation is 26th out of 88, which means that it is the 26th",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 1077.0,
+   "gen_tokens": 160.0,
+   "gen_tps": 182.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "The Orion constellation is a prominent and colorful group of stars that appears to be a cross between a cross and a hunter. It is named after the mythological figure of Orion, a hunter who famously slain three of the seven Herculesanus in his hunts. The constellation is also known as the Hunter's Belt or the Belt of Orion. It is located in the northern sky and contains several bright stars, including Rigel, Betelgeuse, and Alnitak. These stars form a recognizable cross shape and are visible to the naked eye under dark, clear skies. The size of the belt is approximately 26 degrees of an inch, which is equivalent to about 10 degrees of a full circle on the naked",
+  "speed": {
+   "load_s": 0.31,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 782.0,
+   "gen_tokens": 160.0,
+   "gen_tps": 191.8
+  },
+  "invented": [
+   "10"
+  ],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Why should you look at the Moon tonight?\nBecause it is below the horizon.",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 181.0,
+   "prompt_tps": 827.0,
+   "gen_tokens": 17.0,
+   "gen_tps": 226.3
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Because Vega is the brightest star in the sky and it's the first visible from your location. And because Polaris is the North Star, it should be easily visible in the night sky regardless of your location.",
+  "speed": {
+   "load_s": 0.26,
+   "prompt_tokens": 181.0,
+   "prompt_tps": 1125.0,
+   "gen_tokens": 45.0,
+   "gen_tps": 203.3
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Why look at Vega tonight? Because it is the brightest star in the constellation and will be visible now.\nWhy look at the Moon? Because it is below the horizon and can be used as a reference for other celestial objects.",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 181.0,
+   "prompt_tps": 1019.0,
+   "gen_tokens": 51.0,
+   "gen_tps": 210.6
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Why look for the Moon below the horizon? It provides a clear view of the horizon for a full moon.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 181.0,
+   "prompt_tps": 1072.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 179.4
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Polaris is a star located in the constellation Canis Major, also known as the Big Dipper. It is the North Star and has been a popular target for astronomers and stargazers for centuries. Polaris is a type of star called a Cepheid variable star, which means its brightness increases and then decreases in a regular pattern. This pattern makes it a useful reference point for measuring the distance between stars. Polaris is also the center point of the Big Dipper, which is a cluster of other stars that can be used for navigation. Its fixed position throughout the year makes it a useful tool for finding other stars and planets in the night sky.",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 131.0,
+   "prompt_tps": 1062.0,
+   "gen_tokens": 138.0,
+   "gen_tps": 216.1
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "This star is known as Polaris, and it's the North Star. It's like a giant compass that everyone uses to find their way around the Earth. Polaris stays in the same spot all night long, so it's super important for astronomers and navigators. The way to find it is tricky because it's not very big, but it's easy to see with a telescope. Polaris is about 430 light-years away from Earth, which is about 13.6 million miles from our own planet.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 131.0,
+   "prompt_tps": 1107.0,
+   "gen_tokens": 116.0,
+   "gen_tps": 213.8
+  },
+  "invented": [
+   "13.6"
+  ],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Polaris, also known as the North Star, is a star located in the constellation Canis Major. It is the most recognizable star in the night sky and is used as a reference point for navigation on Earth. Polaris is tilted at an angle of just 24 degrees relative to the equator, which makes it appear to point straight towards the North celestial pole. This means that it is nearly always visible in the northern hemisphere during the night and above north. It is important to note that Polaris stays in the same position throughout the year, regardless of the season, making it a reliable navigational aid. Its distance from Earth is approximately 430 light-years, which is about the same distance as 426 million miles.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 131.0,
+   "prompt_tps": 1051.0,
+   "gen_tokens": 158.0,
+   "gen_tps": 192.6
+  },
+  "invented": [
+   "24",
+   "426"
+  ],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Polaris is a star located in the constellation Canis Major, also known as the Big Dipper. It is the North Star, which means it points towards the direction of the North celerity, or the North star in the sky. This star is significant because it remains relatively fixed in the sky over time, making it a useful reference point for navigation even during inclement weather or at night. Polaris is about 430 light-years away from Earth, making it an incredibly useful reference point for astronomers and navigators alike.",
+  "speed": {
+   "load_s": 0.27,
+   "prompt_tokens": 131.0,
+   "prompt_tps": 920.0,
+   "gen_tokens": 114.0,
+   "gen_tps": 168.8
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "The Pleiades, also known as the Seven Sisters, is a star cluster located in the Taurus constellation. It contains about 1000 stars and is visible to the naked eye due to its proximity to Earth.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 122.0,
+   "prompt_tps": 983.0,
+   "gen_tokens": 47.0,
+   "gen_tps": 232.5
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Pleiades, also known as the Seven Sisters, is an open star cluster located in the Taurus constellation. It is the name of seven star groups visible to the naked eye and is home to over 10,000 stars.",
+  "speed": {
+   "load_s": 0.27,
+   "prompt_tokens": 122.0,
+   "prompt_tps": 895.0,
+   "gen_tokens": 52.0,
+   "gen_tps": 211.3
+  },
+  "invented": [
+   "10000"
+  ],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "The name \"Pleiades\" comes from the ancient Greek mythological figure, the Seven Sisters who appeared to the eye of the god Zeus to show him the star cluster that was actually a group of seventy-three stars.",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 122.0,
+   "prompt_tps": 983.0,
+   "gen_tokens": 48.0,
+   "gen_tps": 210.0
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "The name \"Pleiades\" comes from the ancient Greek myth, referring to the seven visible starlets in the constellation Taurus.",
+  "speed": {
+   "load_s": 0.26,
+   "prompt_tokens": 122.0,
+   "prompt_tps": 749.0,
+   "gen_tokens": 29.0,
+   "gen_tps": 212.9
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "I'm sorry, but \"Andromeda\" is not a standard astronomical term. It might be a name for a galaxy or a specific location within one of them. Can you please provide more context or clarify what you mean by \"where's Andromeda\"?",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1111.0,
+   "gen_tokens": 57.0,
+   "gen_tps": 224.3
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "Sroma, also known as Andromeda Galaxy, is located in the constellation Andromeda. It is a spiral galaxy that is about 2.5 million light-years away from Earth.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1116.0,
+   "gen_tokens": 42.0,
+   "gen_tps": 186.3
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "I'm sorry, but I couldn't find any information about the \"Andromeda Galaxy\". It's a famous spiral galaxy located about 2.5 million light-years away from Earth.",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1078.0,
+   "gen_tokens": 43.0,
+   "gen_tps": 203.3
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "I'm sorry, but \"Andromeda\" is not a standard name for a constellation. However, Andromeda is the name of a famous star cluster located in the constellation of Andromeda in the Northern Hemisphere.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1089.0,
+   "gen_tokens": 50.0,
+   "gen_tps": 196.8
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "request: where's andromeda",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 943.0,
+   "gen_tokens": 8.0,
+   "gen_tps": 160.0
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "Are you referring to the Andromeda galaxy or the Milky Way galaxy?",
+  "speed": {
+   "load_s": 0.27,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1087.0,
+   "gen_tokens": 16.0,
+   "gen_tps": 144.9
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "request: find andromeda galaxy",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1105.0,
+   "gen_tokens": 7.0,
+   "gen_tps": 180.3
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "request: where's andromeda",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1058.0,
+   "gen_tokens": 8.0,
+   "gen_tps": 187.0
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 120}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 897.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 31.3
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 120}",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1116.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 89.4
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1037.0,
+   "gen_tokens": 27.0,
+   "gen_tps": 99.7
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 120}",
+  "speed": {
+   "load_s": 0.32,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 847.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 95.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "{}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 152.0,
+   "prompt_tps": 1122.0,
+   "gen_tokens": 1.0,
+   "gen_tps": 210.5
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "JSON format: {\"action\": \"show_time\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 152.0,
+   "prompt_tps": 1116.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 211.3
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "{}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 152.0,
+   "prompt_tps": 1113.0,
+   "gen_tokens": 1.0,
+   "gen_tps": 182.7
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "{}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 152.0,
+   "prompt_tps": 1051.0,
+   "gen_tokens": 1.0,
+   "gen_tps": 159.0
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "request: show_time = move the sky forward (target null). toggle = switch a display setting on or off.",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 624.0,
+   "gen_tokens": 27.0,
+   "gen_tps": 200.9
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\n    \"action\": \"show_time\",\n    \"target\": \"null\",\n    \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 960.0,
+   "gen_tokens": 32.0,
+   "gen_tps": 170.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "request: show_time = move the sky forward (target null). toggle = switch a display setting on or off.\n{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 0}\nrequest: toggle = switch a display setting on or off.\n{\"action\": \"toggle\", \"target\": \"labels\", \"minutes",
+  "speed": {
+   "load_s": 0.37,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 1000.0,
+   "gen_tokens": 80.0,
+   "gen_tps": 170.5
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "request: show_time = move the sky forward (target null)",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 744.0,
+   "gen_tokens": 15.0,
+   "gen_tps": 181.9
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 120}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 983.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 98.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 120}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 1034.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 94.1
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.26,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 1009.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 96.3
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 120}",
+  "speed": {
+   "load_s": 0.26,
+   "prompt_tokens": 257.0,
+   "prompt_tps": 862.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 100.1
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 1087.0,
+   "gen_tokens": 19.0,
+   "gen_tps": 156.2
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "\"toggle\"",
+  "speed": {
+   "load_s": 0.26,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 1117.0,
+   "gen_tokens": 3.0,
+   "gen_tps": 206.6
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 1117.0,
+   "gen_tokens": 19.0,
+   "gen_tps": 215.2
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 158.0,
+   "prompt_tps": 1069.0,
+   "gen_tokens": 19.0,
+   "gen_tps": 199.5
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "request: show_time = move the sky forward (target null). minutes_from_now = 60\nrequest: toggle = switch on_label_labels_display_off.",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 900.0,
+   "gen_tokens": 43.0,
+   "gen_tps": 213.9
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "show_time = 60, target=\"Polaris\"",
+  "speed": {
+   "load_s": 0.29,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 1118.0,
+   "gen_tokens": 16.0,
+   "gen_tps": 196.9
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "request: what's up in two hours?\n{\"action\": \"show_time\", \"target\": \"2 hours\", \"minutes_from_now\": 240}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 1083.0,
+   "gen_tokens": 38.0,
+   "gen_tps": 181.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "request: show_time = move the sky forward (target null). minutes_from_now: 60",
+  "speed": {
+   "load_s": 0.25,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 1094.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 186.6
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": \"Polaris\", \"minutes_from_now\": 120}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 1087.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 91.4
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": \"Polaris\", \"minutes_from_now\": 3600}",
+  "speed": {
+   "load_s": 0.27,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 788.0,
+   "gen_tokens": 30.0,
+   "gen_tps": 99.7
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"target\": \"Polaris\", \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 1139.0,
+   "gen_tokens": 27.0,
+   "gen_tps": 97.4
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": \"Polaris\", \"minutes_from_now\": 360}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 263.0,
+   "prompt_tps": 1101.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 102.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\"}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1100.0,
+   "gen_tokens": 15.0,
+   "gen_tps": 216.1
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "\"show_time\"",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1065.0,
+   "gen_tokens": 5.0,
+   "gen_tps": 183.4
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "{\"toggle\": \"constellation_lines\", \"target\": \"null\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 1065.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 203.7
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "{\"toggle\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 154.0,
+   "prompt_tps": 774.0,
+   "gen_tokens": 19.0,
+   "gen_tps": 76.1
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "request: toggle",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 928.0,
+   "gen_tokens": 3.0,
+   "gen_tps": 77.5
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "toggle = {\"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.24,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 865.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 64.3
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "request: turn_off_constellation_lines\n{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 888.0,
+   "gen_tokens": 36.0,
+   "gen_tps": 71.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "request: toggle",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1026.0,
+   "gen_tokens": 3.0,
+   "gen_tps": 55.7
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 744.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 78.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1109.0,
+   "gen_tokens": 25.0,
+   "gen_tps": 98.1
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"toggle\", \"target\": \"labels\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.23,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1119.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 103.4
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "0.5B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.22,
+   "prompt_tokens": 259.0,
+   "prompt_tps": 1138.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 101.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Vega is a bright star in the constellation Lyra. It has an apparent magnitude of 0.03, which is very bright. It is located about 25 light-years away from Earth. Vega is a member of the Western constellation Lyra.",
+  "speed": {
+   "load_s": 1.15,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 401.0,
+   "gen_tokens": 51.0,
+   "gen_tps": 112.2
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Based on the fact that Vega has an apparent magnitude of 0.03, it is very bright. Its distance is 25 light-years, making it a relatively close star. It is located in the constellation Lyra, and it will have left the night sky in 2001. The star is observed at an altitude of 62 degrees in the east.",
+  "speed": {
+   "load_s": 0.89,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 364.0,
+   "gen_tokens": 73.0,
+   "gen_tps": 73.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Vega, Lyra, a bright star at 0.03 magnitude, is approximately 25 light-years away. It is visible now in the east at an altitude of 62 degrees. Its light has departed in 2001.",
+  "speed": {
+   "load_s": 0.92,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 418.0,
+   "gen_tokens": 48.0,
+   "gen_tps": 107.5
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Vega is a bright star in the constellation Lyra, with an apparent magnitude of 0.03. It is located about 25 light-years away from Earth. The star has been visible since 2001 and is high in the east at an altitude of 62 degrees.",
+  "speed": {
+   "load_s": 0.84,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 400.0,
+   "gen_tokens": 57.0,
+   "gen_tps": 102.9
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "I am looking at the Andromeda Galaxy, a spiral galaxy approximately 2.5 million light-years away. It has an apparent magnitude of 3.4 and an apparent size of 3 degrees across the sky. It was visible to the naked eye as a faint smudge from a dark site.",
+  "speed": {
+   "load_s": 0.84,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 412.0,
+   "gen_tokens": 61.0,
+   "gen_tps": 112.4
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "You are looking at the Andromeda Galaxy (M31), a spiral galaxy located 2.5 million light-years away in our sky. It has an apparent magnitude of 3.4 and an apparent size of 3 degrees across the field of view. You can see it as a faint smudge in the dark, as it is one of the closest major galaxies to Earth.",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 413.0,
+   "gen_tokens": 77.0,
+   "gen_tps": 105.1
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "I recognize Andromeda Galaxy (M31) as a spiral galaxy located approximately 2.5 million light-years away. It has an apparent magnitude of 3.4 and an apparent size of 3 degrees, which is significantly larger than the full Moon. This galaxy is visible to the human eye under dark sky conditions.",
+  "speed": {
+   "load_s": 0.84,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 366.0,
+   "gen_tokens": 65.0,
+   "gen_tps": 101.8
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "I see the Andromeda Galaxy, a spiral galaxy approximately 2.5 million light-years away. It has an apparent magnitude of 3.4 and an apparent size of 3 degrees across. It is visible to the naked eye as a faint smudge from a dark site.",
+  "speed": {
+   "load_s": 0.84,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 409.0,
+   "gen_tokens": 57.0,
+   "gen_tps": 101.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Orion is a prominent constellation in the sky. It is known for its three bright stars in a straight line, called the belt. The constellation is located in the constellation Cygnus. It is a variable star system, with Betelgeuse being a red supergiant.",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 405.0,
+   "gen_tokens": 57.0,
+   "gen_tps": 87.2
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Constellation Orion: The constellation Orion is best known for its three belt stars that form a straight line, visible tonight at 21:40. It is a prominent hunter in the sky, with Rigel as its brightest star of magnitude 0.13 and a second brightest red supergiant Betelgeuse of magnitude 0.5. Orion is 26th in size rank out of 88 constellations.",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 414.0,
+   "gen_tokens": 84.0,
+   "gen_tps": 93.1
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Orion, the Hunter, is a small star in the constellation Orion. It is the brightest and second-brightest star in the night sky. The constellation contains three prominent stars along a straight line. It also has a variable brightness due to its proximity to Earth.",
+  "speed": {
+   "load_s": 0.88,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 359.0,
+   "gen_tokens": 54.0,
+   "gen_tps": 91.0
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Orion is a prominent constellation in the sky, known for its bright star Rigel.\n\nIt is the third-brightest star system visible from Earth.\n\nThe constellation features three straight-belt stars in the constellation Orion.\n\nOrion is one of the most recognizable constellations, often visible in the evening sky.",
+  "speed": {
+   "load_s": 0.81,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 395.0,
+   "gen_tokens": 64.0,
+   "gen_tps": 99.9
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Vega is the brightest star visible, with a magnitude of 0.03 and an altitude of 62 degrees. Andromeda is the brightest galaxy visible, with a magnitude of 3.4 and an altitude of 48 degrees. Pleiades is a bright cluster of stars visible, with a magnitude of 1.6 and an altitude of 25 degrees.",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 425.0,
+   "gen_tokens": 75.0,
+   "gen_tps": 112.1
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Observing Vega can be a first look with its bright magnitude and high altitude, though it's visible now.\n\nObserving the Andromeda Galaxy requires a dark site, as it needs minimal light to be seen.\n\nObserving the Pleiades is a rising cluster of stars, marking the night sky; its brightness and altitude are as given.\n\nObserving Polaris is a marker of the northern sky, its low altitude and low magnitude.",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 437.0,
+   "gen_tokens": 90.0,
+   "gen_tps": 102.5
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Vega: visible, brightest, first.  \nOrphans: visible, brightest, first.\n\nWhy? Vega is the brightest visible star, while the Orphans are fainter but visible now.",
+  "speed": {
+   "load_s": 0.8,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 438.0,
+   "gen_tokens": 41.0,
+   "gen_tps": 94.9
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Vega is visible at an altitude of 62 degrees, making it the brightest object to see tonight. Andromeda Galaxy is a distant cluster of stars, visible at an altitude of 48 degrees, which is faint compared to Vega.",
+  "speed": {
+   "load_s": 0.81,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 436.0,
+   "gen_tokens": 47.0,
+   "gen_tps": 106.4
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Polaris is the North Star. It stays in the same place all night, above north. It is 430 light-years away.",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 409.0,
+   "gen_tokens": 27.0,
+   "gen_tps": 112.2
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Good morning! Don't worry, I can tell you about Polaris. It is the North Star, so you can follow it near the Big Dipper. It stays in the same spot all night, above the north. It is about 430 light-years away.",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 404.0,
+   "gen_tokens": 54.0,
+   "gen_tps": 98.6
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Polaris is the North Star. It stays in the same place all night, above north. It is 430 light-years away.",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 315.0,
+   "gen_tokens": 27.0,
+   "gen_tps": 93.0
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Polaris is the North Star. It stays in the same place all night. It is above the North Pole. It is 430 light-years away.",
+  "speed": {
+   "load_s": 0.84,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 412.0,
+   "gen_tokens": 31.0,
+   "gen_tps": 103.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "This is a factual description of the Pleiades star cluster, identified by its name, type, distance, number of stars, visibility, and constellation.",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 421.0,
+   "gen_tokens": 31.0,
+   "gen_tps": 108.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Based on the star cluster name and characteristics, this is the Pleiades star cluster, identified as Pleiades (M45). It is a bright open star cluster located approximately 440 light-years away. The cluster contains about 1000 stars, but only about 6 are easily visible to the human eye. It is part of the Taurus constellation.",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 412.0,
+   "gen_tokens": 72.0,
+   "gen_tps": 102.4
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "This is the Pleiades star cluster, also known as the Seven Sisters. It is an open star cluster located approximately 440 light-years away. The cluster contains about 1000 stars, but only about 6 are easily visible to the unaided eye. It is part of the Taurus constellation.",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 420.0,
+   "gen_tokens": 61.0,
+   "gen_tps": 102.4
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "This is a star cluster named Pleiades, commonly known as the Seven Sisters, located approximately 440 light-years away in the constellation Taurus. It contains about 1000 stars, with roughly 6 being visible to the unaided eye.",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 431.0,
+   "gen_tokens": 49.0,
+   "gen_tps": 107.1
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "```json\n{\n  \"action\": \"find\",\n  \"target\": \"Andromeda Galaxy\",\n  \"minutes_from_now\": 0\n}\n```",
+  "speed": {
+   "load_s": 0.86,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 323.0,
+   "gen_tokens": 33.0,
+   "gen_tps": 111.0
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "I'm sorry, but I don't have the capability to search the internet for specific information about events, locations, or time-related data. I can't access external databases or search the internet to provide real-time information.\n\nIf you're looking for information on any specific event, location, or time, feel free to ask, and I'll do my best to help you with general knowledge and information",
+  "speed": {
+   "load_s": 0.9,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 331.0,
+   "gen_tokens": 80.0,
+   "gen_tps": 94.8
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "```json\n{\n  \"action\": \"find\",\n  \"target\": \"Andromeda Galaxy\",\n  \"minutes_from_now\": 0\n}\n```",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 397.0,
+   "gen_tokens": 33.0,
+   "gen_tps": 106.7
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "```json\n{\n  \"action\": \"find\",\n  \"target\": \"Andromeda Galaxy\",\n  \"minutes_from_now\": 0\n}\n```",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 345.0,
+   "gen_tokens": 33.0,
+   "gen_tps": 92.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "{\n  \"action\": \"find\",\n  \"target\": \"Andromeda Galaxy\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.88,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 288.0,
+   "gen_tokens": 29.0,
+   "gen_tps": 60.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.93,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 325.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 104.8
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "{\n  \"action\": \"find\",\n  \"target\": \"Andromeda Galaxy\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 405.0,
+   "gen_tokens": 29.0,
+   "gen_tps": 91.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "{\n  \"action\": \"find\",\n  \"target\": \"Andromeda Galaxy\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.95,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 391.0,
+   "gen_tokens": 29.0,
+   "gen_tps": 54.0
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.93,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 419.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 51.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.86,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 355.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 47.8
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.94,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 320.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 43.1
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 420.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 43.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "I don't have access to real-time data or the current time, so I cannot determine the current time or the position of the sky. I cannot perform any actions such as showing the time or moving the time.\n\nI cannot perform any actions such as showing the time or moving the time.\n\nI cannot perform any actions such as showing the time or moving the time.\n\nI cannot perform any",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 370.0,
+   "gen_tokens": 80.0,
+   "gen_tps": 103.9
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "{\n  \"action\": \"show_time\",\n  \"target\": \"Vega\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 421.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 106.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "I cannot fulfill this request. I am an AI assistant and do not have the capability to show stars such as Vega. I can provide information about stars, but I do not have a function to perform external tasks, such as displaying images or moving time.\n\nHowever, I can provide information about Vega if you'd like. Vega is the brightest star in the constellation of Cygnus and is located",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 423.0,
+   "gen_tokens": 80.0,
+   "gen_tps": 106.0
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "I'm sorry, but as an AI, I don't have the capability to move the time on the sky or perform external actions. I can only provide information or perform tasks that are within my programmed functions. For instance, I can help you find information about a constellation, but I cannot show you time.",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 420.0,
+   "gen_tokens": 62.0,
+   "gen_tps": 107.2
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "```json\n{\n  \"action\": \"show_time\",\n  \"target\": \"Vega\",\n  \"minutes_from_now\": 0\n}\n```",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 432.0,
+   "gen_tokens": 32.0,
+   "gen_tps": 107.8
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 406.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 101.7
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "```json\n{\n  \"action\": \"show_time\",\n  \"target\": \"Vega\",\n  \"minutes_from_now\": 0\n}\n```",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 427.0,
+   "gen_tokens": 32.0,
+   "gen_tps": 102.0
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "```json\n{\n  \"action\": \"show_time\",\n  \"target\": \"vega\",\n  \"minutes_from_now\": 0\n}\n```",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 416.0,
+   "gen_tokens": 32.0,
+   "gen_tps": 99.3
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 408.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 56.7
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 421.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 53.8
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 416.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 53.4
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.81,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 431.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 50.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "I don't have access to real-time data or the current time, so I can't determine what the sky will look like in an hour. I can only provide information about how to interact with the sky, such as moving the time forward or changing display settings.",
+  "speed": {
+   "load_s": 0.9,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 242.0,
+   "gen_tokens": 53.0,
+   "gen_tps": 83.6
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.81,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 428.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 105.4
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "I don't have access to real-time data or celestial observations. I cannot tell you what to watch in the sky.\n\nI can help you with some general questions, like:\n\n*   What constellation are you looking at? (e.g., Orion, Polaris, Orion)\n*   What time is it?\n*   Do you want to be told what to see in the next hour?\n",
+  "speed": {
+   "load_s": 0.9,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 418.0,
+   "gen_tokens": 80.0,
+   "gen_tps": 96.7
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "I don't have access to real-time data or the current time, so I cannot tell you what the sky will look like in an hour.\n\nTo get a real-time update, you would need to tell me your current time or a specific time range. If you provide me with a specific time range, I can tell you what the sky will look like in the next few hours. But for",
+  "speed": {
+   "load_s": 0.86,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 417.0,
+   "gen_tokens": 80.0,
+   "gen_tps": 59.3
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "{\n  \"action\": \"show_time\",\n  \"target\": null,\n  \"minutes_from_now\": 60\n}",
+  "speed": {
+   "load_s": 0.93,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 375.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 105.9
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.84,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 406.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 101.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "{\n  \"action\": \"show_time\",\n  \"target\": null,\n  \"minutes_from_now\": 60\n}",
+  "speed": {
+   "load_s": 0.86,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 374.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 102.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "{\n  \"action\": \"show_time\",\n  \"target\": null,\n  \"minutes_from_now\": 60\n}",
+  "speed": {
+   "load_s": 0.96,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 416.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 101.9
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.84,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 349.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 48.0
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.89,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 294.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 39.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 1}",
+  "speed": {
+   "load_s": 0.86,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 408.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 50.5
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 398.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 53.1
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "I don't have access to turn off the constellation lines. I can only perform actions like showing time, toggling a display, or finding objects, but I don't have the capability to control the constellation lines.",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 419.0,
+   "gen_tokens": 44.0,
+   "gen_tps": 111.3
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "{\n  \"action\": \"turn_off_display\",\n  \"target\": \"constellation_lines\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 432.0,
+   "gen_tokens": 32.0,
+   "gen_tps": 106.2
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "I'm unable to perform external tasks such as turning off constellation lines. My capabilities are limited to providing information and performing actions within the scope of the conversation. For instance, I can give you information about the night mode, show time, or help you find the time it is currently. Please provide me with the information that you need, or let me know if there's something else I can assist you",
+  "speed": {
+   "load_s": 0.81,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 427.0,
+   "gen_tokens": 80.0,
+   "gen_tps": 105.8
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "I'm sorry, but I don't have the capability to perform external actions or interact with the user's device. I can't turn off the constellation lines. My current function is to respond to your request as if I were the user. I'm ready to assist with other tasks if you'd like to know more.",
+  "speed": {
+   "load_s": 0.81,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 430.0,
+   "gen_tokens": 64.0,
+   "gen_tps": 106.9
+  },
+  "json_valid": false,
+  "correct": false
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "{\n  \"action\": \"toggle\",\n  \"target\": \"constellation_lines\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.81,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 428.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 106.0
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 427.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 102.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "{\n  \"action\": \"toggle\",\n  \"target\": \"constellation_lines\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 422.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 98.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "{\n  \"action\": \"toggle\",\n  \"target\": \"constellation_lines\",\n  \"minutes_from_now\": 0\n}",
+  "speed": {
+   "load_s": 0.85,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 413.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 100.7
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.82,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 428.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 56.9
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 421.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 54.0
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 416.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 52.8
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "1B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 0.83,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 427.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 53.1
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "The star is Vega, a bright star in the constellation Lyra. It has an apparent magnitude of 0.03 and is about 25 light-years away. The name comes from Arabic, meaning \"the swooping eagle.\"",
+  "speed": {
+   "load_s": 2.33,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 135.0,
+   "gen_tokens": 46.0,
+   "gen_tps": 49.6
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "You are looking at Vega, a bright star in the constellation Lyra. Its apparent magnitude is 0.03, and it is only 25 light-years away. The name comes from Arabic \"al-nasr al-waqi,\" meaning the swooping eagle.",
+  "speed": {
+   "load_s": 1.76,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 123.0,
+   "gen_tokens": 55.0,
+   "gen_tps": 38.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "The star you are pointing at is Vega. It is a bright star in the constellation Lyra, with an apparent magnitude of 0.03. Vega's name comes from the Arabic \"al-nasr al-waqi,\" meaning the swooping eagle.",
+  "speed": {
+   "load_s": 1.82,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 136.0,
+   "gen_tokens": 53.0,
+   "gen_tps": 47.2
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "star-vega",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "The star is Vega, a bright star in the constellation Lyra. It is approximately 25 light-years away and currently appears high in the east at an altitude of 62 degrees. Its name comes from the Arabic \"al-nasr al-waqi,\" meaning the swooping eagle.",
+  "speed": {
+   "load_s": 1.74,
+   "prompt_tokens": 144.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 59.0,
+   "gen_tps": 48.1
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "You are looking at the Andromeda Galaxy, a spiral galaxy. It is 2.5 million light-years away. From a dark site, it appears as a faint smudge.",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 156.0,
+   "gen_tokens": 37.0,
+   "gen_tps": 44.9
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "It’s the Andromeda Galaxy, a spiral galaxy. It’s 2.5 million light-years away, appearing with an apparent magnitude of 3.4. You can see it as a faint smudge from a dark site.",
+  "speed": {
+   "load_s": 1.73,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 150.0,
+   "gen_tokens": 47.0,
+   "gen_tps": 47.6
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "You're looking at the Andromeda Galaxy, a spiral galaxy. It's 2.5 million light-years away. From a dark site, it appears as a faint smudge in the sky.",
+  "speed": {
+   "load_s": 1.86,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 93.0,
+   "gen_tokens": 40.0,
+   "gen_tps": 35.6
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-m31",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "You're looking at the Andromeda Galaxy, a spiral galaxy. It's about 2.5 million light-years away. From a dark site, it appears as a faint smudge.",
+  "speed": {
+   "load_s": 1.9,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 80.0,
+   "gen_tokens": 38.0,
+   "gen_tps": 35.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Orion is the Hunter, with Rigel as its brightest star. Betelgeuse, a red supergiant, is the second brightest. Orion rises tonight at 21:40.",
+  "speed": {
+   "load_s": 1.77,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 148.0,
+   "gen_tokens": 39.0,
+   "gen_tps": 45.7
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Orion is known for the three belt stars. Rigel is the brightest star, while Betelgeuse is a red supergiant. Orion rises tonight at 21:40.",
+  "speed": {
+   "load_s": 1.84,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 82.0,
+   "gen_tokens": 38.0,
+   "gen_tps": 21.8
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Orion is the Hunter, with Rigel as its brightest star. Betelgeuse, a red supergiant, is the second brightest. Orion rises tonight at 21:40.",
+  "speed": {
+   "load_s": 1.86,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 83.0,
+   "gen_tokens": 39.0,
+   "gen_tps": 28.6
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "const-orion",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Orion is the Hunter, with Rigel as its brightest star. Betelgeuse, a red supergiant, is the second brightest. Orion rises tonight at 21:40.",
+  "speed": {
+   "load_s": 2.27,
+   "prompt_tokens": 148.0,
+   "prompt_tps": 148.0,
+   "gen_tokens": 39.0,
+   "gen_tps": 48.0
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Look at Vega and Andromeda. Vega is the brightest and visible now. Andromeda needs a dark site, so it's worth noting.",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 160.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 50.4
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Look at Vega because it's the brightest at magnitude 0.03.  \nLook at Polaris because it marks north at altitude 34 degrees.  \nDon't look at the Moon because it's below the horizon.",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 161.0,
+   "gen_tokens": 44.0,
+   "gen_tps": 49.0
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Look at Vega and Andromeda. Vega is the brightest, and Andromeda needs a dark site. Don't forget Polaris marks north.",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 28.0,
+   "gen_tps": 47.8
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "guide-tonight",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Look at Vega and Andromeda. Vega is the brightest. Andromeda needs a dark site.",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 172.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 19.0,
+   "gen_tps": 48.5
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Polaris is the North Star. To find it, follow the two end stars of the Big Dipper's bowl. It stays above us all night, even though it's far away.",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 38.0,
+   "gen_tps": 47.6
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "Polaris is a big star in the north. To find it, follow the two end stars of the Big Dipper's bowl. It stays in the same place all night, above north.",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 160.0,
+   "gen_tokens": 39.0,
+   "gen_tps": 49.0
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Polaris is the North Star. To find it, follow the two end stars of the Big Dipper's bowl. It stays above you all night, and it's about 430 light-years away.",
+  "speed": {
+   "load_s": 1.72,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 41.0,
+   "gen_tps": 50.2
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "kid-polaris",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Polaris is the North Star. To find it, follow the two end stars of the Big Dipper's bowl. It stays above north all night.",
+  "speed": {
+   "load_s": 1.71,
+   "prompt_tokens": 124.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 31.0,
+   "gen_tps": 50.1
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "greedy",
+  "output": "Pleiades is an open star cluster. It is located in the constellation Taurus. About 1000 stars are in it, with about 6 visible to the eye.",
+  "speed": {
+   "load_s": 1.71,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 138.0,
+   "gen_tokens": 35.0,
+   "gen_tps": 50.8
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s1",
+  "output": "It is an open star cluster. It is located in the constellation Taurus. It is about 440 light-years away.",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 48.8
+  },
+  "invented": [],
+  "mentions": false,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s2",
+  "output": "Pleiades is an open star cluster known as the Seven Sisters. It is located in the Taurus constellation. About 1000 stars make up the cluster, with around 6 visible to the eye.",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 41.0,
+   "gen_tps": 49.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "dso-pleiades",
+  "kind": "narrate",
+  "variant": "",
+  "setting": "t0.7/s3",
+  "output": "Pleiades is an open star cluster. It is located in the constellation Taurus. It is about 440 light-years away.",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 116.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 26.0,
+   "gen_tps": 49.3
+  },
+  "invented": [],
+  "mentions": true,
+  "degenerate": false
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 50.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 48.7
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "{\"action\":\"find\",\"target\":\"Andromeda Galaxy\",\"minutes_from_now\":0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 155.0,
+   "gen_tokens": 19.0,
+   "gen_tps": 48.8
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 48.7
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 153.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 46.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 47.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 48.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 47.8
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 34.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 33.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 156.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 33.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-m31",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"find\", \"target\": \"Andromeda Galaxy\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 24.0,
+   "gen_tps": 33.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 155.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 49.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 154.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 48.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "{\"action\":\"find\",\"target\":\"Vega\",\"minutes_from_now\":0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 155.0,
+   "gen_tokens": 17.0,
+   "gen_tps": 47.9
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 143.0,
+   "prompt_tps": 151.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 47.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 48.8
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 47.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 47.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 47.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 34.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 33.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 33.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-find-vega",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"find\", \"target\": \"Vega\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 231.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 22.0,
+   "gen_tps": 33.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 156.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 46.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 155.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 48.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "{\"action\":\"show_time\",\"target\":null,\"minutes_from_now\":60}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 156.0,
+   "gen_tokens": 17.0,
+   "gen_tps": 48.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 150.0,
+   "prompt_tps": 149.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 48.4
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 48.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 47.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 48.0
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 47.0
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 34.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 33.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 33.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-time",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"show_time\", \"target\": null, \"minutes_from_now\": 60}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 238.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 21.0,
+   "gen_tps": 33.1
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "greedy",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 49.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 48.1
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s2",
+  "output": "{\"action\":\"toggle\",\"target\":\"constellation_lines\",\"minutes_from_now\":null}",
+  "speed": {
+   "load_s": 1.69,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 157.0,
+   "gen_tokens": 18.0,
+   "gen_tps": 48.1
+  },
+  "json_valid": true,
+  "correct": false
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v1",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 145.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 48.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "greedy",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 49.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 47.5
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 47.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.72,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 156.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 47.7
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "greedy",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.7,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 156.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 34.6
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s1",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.67,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 33.3
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s2",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 159.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 33.2
+  },
+  "json_valid": true,
+  "correct": true
+ },
+ {
+  "model": "2B",
+  "case": "intent-toggle",
+  "kind": "intent",
+  "variant": "v2+grammar",
+  "setting": "t0.7/s3",
+  "output": "{\"action\": \"toggle\", \"target\": \"constellation_lines\", \"minutes_from_now\": 0}",
+  "speed": {
+   "load_s": 1.68,
+   "prompt_tokens": 233.0,
+   "prompt_tps": 158.0,
+   "gen_tokens": 23.0,
+   "gen_tps": 33.6
+  },
+  "json_valid": true,
+  "correct": true
+ }
+]

@@ -54,6 +54,8 @@ struct lm_ctx {
     char tail[4];      /* incomplete trailing UTF-8 sequence, carried into the next piece */
     int32_t tail_len;
 
+    char* grammar; /* GBNF applied to each generation; NULL = none */
+
     char error[LM_ERROR_CAP];
 };
 
@@ -167,6 +169,30 @@ int32_t lm_context_size(lm_ctx* c) {
     return (int32_t)llama_n_ctx(c->ctx);
 }
 
+int32_t lm_set_grammar(lm_ctx* c, const char* gbnf) {
+    c->error[0] = '\0';
+    if (gbnf[0] == '\0') {
+        free(c->grammar);
+        c->grammar = NULL;
+        return 0;
+    }
+    /* Parse now, so a bad grammar fails here and not at the next prompt. */
+    struct llama_sampler* probe = llama_sampler_init_grammar(c->vocab, gbnf, "root");
+    if (!probe) {
+        set_error(c->error, "grammar does not parse (GBNF, root rule \"root\")");
+        return -1;
+    }
+    llama_sampler_free(probe);
+    char* copy = strdup(gbnf);
+    if (!copy) {
+        set_error(c->error, "out of memory");
+        return -1;
+    }
+    free(c->grammar);
+    c->grammar = copy;
+    return 0;
+}
+
 static void reset_generation(lm_ctx* c) {
     c->pending_len = 0;
     c->tail_len = 0;
@@ -215,6 +241,10 @@ int32_t lm_prompt(lm_ctx* c, const char* prompt, int32_t max_tokens, float tempe
     free(tokens);
 
     struct llama_sampler* s = llama_sampler_chain_init(llama_sampler_chain_default_params());
+    if (c->grammar) {
+        /* First in the chain: everything after it only sees tokens the grammar allows. */
+        llama_sampler_chain_add(s, llama_sampler_init_grammar(c->vocab, c->grammar, "root"));
+    }
     if (temperature <= 0.0f) {
         llama_sampler_chain_add(s, llama_sampler_init_greedy());
     } else {
@@ -300,6 +330,7 @@ int32_t lm_error(lm_ctx* c, char* out, int32_t cap) {
 void lm_free(lm_ctx* c) {
     if (!c) return;
     if (c->sampler) llama_sampler_free(c->sampler);
+    free(c->grammar);
     llama_free(c->ctx);
     llama_model_free(c->model);
     free(c->pending);

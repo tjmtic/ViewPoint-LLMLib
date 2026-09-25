@@ -100,6 +100,25 @@ int main(int argc, char** argv) {
     for (int32_t n; (n = lm_next_token(c, s2 + l2, 256)) > 0;) l2 += n;
     CHECK(l1 == l2 && memcmp(s1, s2, (size_t)l1) == 0, "same seed, same text");
 
+    /* A grammar restricts output to what it allows; a bad one is refused and changes nothing. */
+    CHECK(lm_set_grammar(c, "root ::= (") == -1, "unparseable grammar is refused");
+    mlen = lm_error(c, msg, sizeof msg);
+    CHECK(mlen > 0, "grammar error explains");
+    CHECK(lm_set_grammar(c, "root ::= \"yes\" | \"no\"") == 0, "yes/no grammar");
+    for (int seed = 1; seed <= 5; seed++) {
+        char g[64];
+        int32_t gl = 0;
+        CHECK(lm_prompt(c, "Once upon a time", 16, 0.9f, 1.0f, seed) == 0, "grammar prompt");
+        for (int32_t n; (n = lm_next_token(c, g + gl, 32)) > 0;) gl += n;
+        g[gl] = '\0';
+        CHECK(strcmp(g, "yes") == 0 || strcmp(g, "no") == 0, "grammar output '%s' is yes or no", g);
+    }
+    CHECK(lm_set_grammar(c, "") == 0, "grammar removed");
+    char free_text[4096];
+    int pf;
+    int32_t lf = generate(c, "Once upon a time", 24, free_text, sizeof free_text, &pf);
+    CHECK(lf == la && memcmp(free_text, a, (size_t)la) == 0, "without the grammar, greedy output is back to normal");
+
     lm_free(c);
     lm_free(NULL);
 

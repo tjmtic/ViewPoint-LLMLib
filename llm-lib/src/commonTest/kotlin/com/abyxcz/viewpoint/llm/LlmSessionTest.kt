@@ -86,4 +86,31 @@ class LlmSessionTest {
         s.close()
         assertFailsWith<IllegalStateException> { s.countTokens("x") }
     }
+
+    @Test
+    fun grammarLimitsOutputToWhatItAllows() = runTest {
+        val yesNo = """root ::= "yes" | "no""""
+        repeat(4) { seed ->
+            val out =
+                session
+                    .generate(
+                        "Once upon a time",
+                        Sampling(maxTokens = 8, temperature = 0.9f, seed = seed, grammar = yesNo),
+                    )
+                    .toList()
+                    .joinToString("")
+            assertTrue(out == "yes" || out == "no", "grammar output '$out'")
+        }
+        val free = session.generate("Once upon a time", greedy).toList().joinToString("")
+        assertTrue(free.length > 3, "no grammar: free text again")
+    }
+
+    @Test
+    fun unparseableGrammarIsRefused() = runTest {
+        val e =
+            assertFailsWith<LlmException> {
+                session.generate("x", Sampling(grammar = "root ::= (")).toList()
+            }
+        assertContains(e.message.orEmpty(), "grammar")
+    }
 }
