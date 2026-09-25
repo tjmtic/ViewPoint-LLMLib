@@ -1,0 +1,9 @@
+headers = lm_shim.h
+headerFilter = lm_shim.h
+package = com.abyxcz.viewpoint.llm.cinterop
+
+# The shim is compiled per Kotlin/Native target into liblmshim.a by the compileLmShim*
+# tasks; its directory arrives via cinterop extraOpts (-libraryPath). llama.cpp symbols
+# resolve at the final link: CBindingKMP adds -framework llama to K/N test executables,
+# and an app links + embeds llama.xcframework in Xcode.
+staticLibraries = liblmshim.a

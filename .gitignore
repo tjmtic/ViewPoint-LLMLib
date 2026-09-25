@@ -1,0 +1,9 @@
+.gradle/
+build/
+local.properties
+.idea/
+.kotlin/
+.DS_Store
+.cxx/
+# Built by scripts/build-llama-xcframework.sh (≈60 MB) until it is hosted as a release asset.
+third_party/*.zip
