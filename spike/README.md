@@ -6,11 +6,12 @@ the apps will run. Every case is run greedy and at temperature 0.7 with three se
 
 ```bash
 spike/run_spike.py "1B=/path/MiniCPM5-1B-Q4_K_M.gguf:bos=<s>:think=off" \
-                   "0.5B=/path/MiniCPM4-0.5B-QAT-Int4_gptq_aware_q4_0.gguf:think=none"
+                   "2B=/path/MiniCPM5-2B-Q4_K_M.gguf:bos=<s>:think=off"
 ```
 
-`bos=` is the literal start token the template writes (MiniCPM5: `<s>`; MiniCPM4's tokenizer
-adds its own, so none). `think=off` renders MiniCPM5's empty think block; `none` omits it.
+`bos=` is the literal start token the template writes (MiniCPM5: `<s>`; a model whose
+tokenizer adds its own takes none). `think=off` renders MiniCPM5's empty think block; `none`
+omits it (templates without one, like the dropped MiniCPM4-0.5B).
 
 ## What is scored
 

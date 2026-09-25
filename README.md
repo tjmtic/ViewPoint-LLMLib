@@ -22,8 +22,6 @@ LlmSession.load(modelPath, LlmConfig(contextTokens = 2048)).use { llm ->
 - One generation at a time per session. The prompt is used as-is, so format it with
   `ChatMl.MiniCpm5.prompt(user, system, thinking = false)`. MiniCPM5 needs the literal `<s>`
   its template writes (its tokenizer adds no BOS); without it the model emits newlines or loops.
-  `ChatMl.MiniCpm4` (the 0.5B tier) is the opposite: its tokenizer adds BOS and its template has
-  no thinking block.
 
 ## Layout
 

@@ -9,8 +9,8 @@ package com.abyxcz.viewpoint.llm
  * false`) — its template writes `<s>` as text. Without it the model degenerates into newlines or
  * loops. Models whose tokenizer adds BOS, or that use none, take `""`.
  *
- * [thinkingSwitch]: whether the template has MiniCPM5's `<think>` block. Models without one
- * (MiniCPM4) get a plain assistant turn.
+ * [thinkingSwitch]: whether the template has MiniCPM5's `<think>` block. Models without one (e.g.
+ * Qwen2.5) get a plain assistant turn.
  */
 class ChatMl(val bos: String, val thinkingSwitch: Boolean = true) {
 
@@ -34,8 +34,5 @@ class ChatMl(val bos: String, val thinkingSwitch: Boolean = true) {
     companion object {
         /** openbmb MiniCPM5 (1B, 2B): tokenizer adds no BOS, template writes `<s>`. */
         val MiniCpm5 = ChatMl(bos = "<s>")
-
-        /** openbmb MiniCPM4 (0.5B): tokenizer adds BOS itself; plain ChatML, no thinking. */
-        val MiniCpm4 = ChatMl(bos = "", thinkingSwitch = false)
     }
 }

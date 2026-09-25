@@ -36,11 +36,13 @@ class ChatMlTest {
     }
 
     @Test
-    fun miniCpm4HasNoBosTextAndNoThinkBlock() {
+    fun templatesWithoutThinkingGetAPlainAssistantTurn() {
         assertEquals(
             "<|im_start|>user\nhi<|im_end|>\n<|im_start|>assistant\n",
-            ChatMl.MiniCpm4.prompt("hi"),
+            ChatMl(bos = "", thinkingSwitch = false).prompt("hi"),
         )
-        assertFailsWith<IllegalArgumentException> { ChatMl.MiniCpm4.prompt("hi", thinking = true) }
+        assertFailsWith<IllegalArgumentException> {
+            ChatMl(bos = "", thinkingSwitch = false).prompt("hi", thinking = true)
+        }
     }
 }

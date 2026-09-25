@@ -17,7 +17,7 @@ Intent variants: **v1** first prompt; **v2** "you label, never perform" + three 
 
 ## What it means
 
-1. **Drop the 0.5B tier.** It is the only tier that invents numbers (it put Polaris in Canis
+1. **Drop the 0.5B tier** — decided 2026-09-25; the library no longer has a preset for it. It is the only tier that invents numbers (it put Polaris in Canis
    Major, gave the Pleiades 10000 stars) and it cannot do intents even under a grammar — it
    copies the "two hours" example into unrelated requests. Low-RAM devices get no LLM
    features rather than wrong ones.
