@@ -1,4 +1,5 @@
 import com.abyxcz.buildlogic.PrebuiltArchives
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTest
@@ -85,12 +86,17 @@ val fetchTestModel by
 // ---- Kotlin ------------------------------------------------------------------------------
 
 kotlin {
+    // expect/actual classes (NativeLlm) are Beta; opt in explicitly so builds stay warning-free.
+    compilerOptions { freeCompilerArgs.add("-Xexpect-actual-classes") }
+
     androidTarget {
         publishLibraryVariants("release")
         compilerOptions { jvmTarget.set(JvmTarget.JVM_17) }
         // commonTest needs the native library, so it runs as instrumented tests (device or
         // emulator), not as JVM unit tests.
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
         unitTestVariant.sourceSetTree.set(KotlinSourceSetTree.unitTest)
     }
 
