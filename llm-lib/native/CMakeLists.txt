@@ -27,8 +27,24 @@ set(GGML_OPENMP OFF CACHE BOOL "" FORCE)
 if(ANDROID)
     set(GGML_NATIVE OFF CACHE BOOL "" FORCE)
     set(GGML_LLAMAFILE OFF CACHE BOOL "" FORCE)
+    if(ANDROID_ABI STREQUAL "arm64-v8a")
+        # 2.5x generation speed over generic armv8-a on the emulator (1560 vs 615 tok/s,
+        # stories15M). Cortex-A55/A75 and newer (~2018+); lm_load refuses older CPUs
+        # before any of this code runs, instead of dying on an illegal instruction.
+        set(GGML_CPU_ARM_ARCH "armv8.2-a+dotprod+fp16" CACHE STRING "" FORCE)
+    endif()
 endif()
 add_subdirectory(${CBINDING_LLAMA_DIR} llama EXCLUDE_FROM_ALL)
+
+# llama.cpp unoptimised is ~20x slower (30 vs 625 tok/s on the emulator): an app's debug
+# build must still run it optimised. Only the shim itself stays debuggable.
+if(NOT CMAKE_BUILD_TYPE MATCHES "Release|RelWithDebInfo|MinSizeRel")
+    foreach(t llama ggml ggml-base ggml-cpu)
+        if(TARGET ${t})
+            target_compile_options(${t} PRIVATE -O2)
+        endif()
+    endforeach()
+endif()
 
 set(LM_SOURCES src/lm_shim.c src/lm_utf8.c)
 

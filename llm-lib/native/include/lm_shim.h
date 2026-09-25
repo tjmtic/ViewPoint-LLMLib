@@ -25,7 +25,10 @@ typedef struct lm_ctx lm_ctx;
 /*
  * Loads a GGUF model and creates an inference context. Returns NULL on failure; call
  * lm_load_error on the same thread for the reason. The llama backend is initialised on the
- * first call. n_ctx: context length in tokens (0 = the model's). n_threads: CPU threads.
+ * first call. n_ctx: context length in tokens (0 = the model's). n_threads: CPU threads;
+ * 0 = min(4, online CPUs), and never more than the CPU count (llama.cpp's threads spin, so
+ * oversubscribing a core is ~1000x slower). On Android arm64 a CPU without the ARMv8.2
+ * dot-product/fp16 instructions is refused here, with the reason in lm_load_error.
  * n_gpu_layers: layers offloaded to the GPU (-1 = all). 0 = CPU only: no GPU backend is
  * initialised at all (needed where there is no GPU queue, e.g. the iOS simulator).
  */

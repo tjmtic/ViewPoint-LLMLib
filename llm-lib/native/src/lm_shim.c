@@ -1,6 +1,7 @@
 #include "lm_shim.h"
 
 #include <pthread.h>
+#include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,6 +9,33 @@
 
 #include "llama.h"
 #include "lm_utf8.h"
+
+#if defined(__ANDROID__) && defined(__aarch64__)
+#include <asm/hwcap.h>
+#include <sys/auxv.h>
+/* ggml-cpu is compiled for armv8.2-a+dotprod+fp16 (CMakeLists.txt). This file is not, so it
+ * can check before any of that code runs. */
+static const char* cpu_unsupported(void) {
+    unsigned long hw = getauxval(AT_HWCAP);
+    if (!(hw & HWCAP_ASIMDDP) || !(hw & HWCAP_FPHP) || !(hw & HWCAP_ASIMDHP)) {
+        return "this CPU lacks the ARMv8.2 dot-product/fp16 instructions the model runtime is "
+               "built for (needs Cortex-A55/A75 or newer)";
+    }
+    return NULL;
+}
+#else
+static const char* cpu_unsupported(void) { return NULL; }
+#endif
+
+/* n_threads <= 0: min(4, online CPUs). Explicit values are capped at the CPU count:
+ * llama.cpp's worker threads spin, and oversubscribing a core costs ~1000x
+ * (0.5 vs 625 tok/s with 4 threads on a 1-core emulator). */
+static int32_t effective_threads(int32_t requested) {
+    long cpus = sysconf(_SC_NPROCESSORS_ONLN);
+    if (cpus < 1) cpus = 1;
+    if (requested <= 0) return cpus < 4 ? (int32_t)cpus : 4;
+    return requested < cpus ? requested : (int32_t)cpus;
+}
 
 #define LM_ERROR_CAP 512
 
@@ -78,8 +106,13 @@ static int ensure_pending(lm_ctx* c, int32_t needed) {
 /* ---- API ----------------------------------------------------------------------------- */
 
 lm_ctx* lm_load(const char* model_path, int32_t n_ctx, int32_t n_threads, int32_t n_gpu_layers) {
-    pthread_once(&g_backend_once, backend_init);
     g_load_error[0] = '\0';
+    const char* unsupported = cpu_unsupported();
+    if (unsupported) {
+        set_error(g_load_error, "%s", unsupported);
+        return NULL;
+    }
+    pthread_once(&g_backend_once, backend_init);
 
     struct llama_model_params mp = llama_model_default_params();
     mp.n_gpu_layers = n_gpu_layers;
@@ -97,10 +130,8 @@ lm_ctx* lm_load(const char* model_path, int32_t n_ctx, int32_t n_threads, int32_
     struct llama_context_params cp = llama_context_default_params();
     cp.n_ctx = n_ctx > 0 ? (uint32_t)n_ctx : 0;
     cp.n_batch = cp.n_ctx > 0 && cp.n_ctx < 512 ? cp.n_ctx : 512;
-    if (n_threads > 0) {
-        cp.n_threads = n_threads;
-        cp.n_threads_batch = n_threads;
-    }
+    cp.n_threads = effective_threads(n_threads);
+    cp.n_threads_batch = cp.n_threads;
     struct llama_context* ctx = llama_init_from_model(model, cp);
     if (!ctx) {
         llama_model_free(model);

@@ -10,8 +10,11 @@ import kotlinx.coroutines.flow.flowOn
 data class LlmConfig(
     /** Context length in tokens: prompt plus generated text must fit. 0 = the model's own. */
     val contextTokens: Int = 2048,
-    /** CPU threads for inference. */
-    val threads: Int = 4,
+    /**
+     * CPU threads for inference. 0 = min(4, online cores). Never more than the core count:
+     * llama.cpp's threads spin, and oversubscribing a core makes inference ~1000x slower.
+     */
+    val threads: Int = 0,
     /** Layers offloaded to the GPU: 0 = CPU only, -1 = all. */
     val gpuLayers: Int = 0,
 )

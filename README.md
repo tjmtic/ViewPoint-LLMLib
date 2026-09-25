@@ -36,7 +36,10 @@ LlmSession.load(modelPath, LlmConfig(contextTokens = 2048)).use { llm ->
 Pinned to tag `b11165` everywhere, via `cbinding.prebuilt("llama")` in `llm-lib/build.gradle.kts`:
 
 - **Android**: the source tarball (sha256-pinned) compiled by CMake for `arm64-v8a` and
-  `x86_64`. CPU only; no ARM feature flags yet (`GGML_NATIVE=OFF`), so speed tuning is open.
+  `x86_64`, CPU only. arm64 targets `armv8.2-a+dotprod+fp16` (Cortex-A55/A75 and newer,
+  ~2018+); `lm_load` refuses an older CPU with a reason instead of crashing on an illegal
+  instruction. llama.cpp is compiled `-O2` even in debug builds; only the shim stays
+  debuggable.
 - **iOS**: `llama.xcframework` with `ios-arm64` and `ios-arm64_x86_64-simulator`, built from the
   same tag by `scripts/build-llama-xcframework.sh` — the release asset has no simulator slice.
   It is a **dynamic** framework (min iOS 16.4): an app must link and **embed** it in Xcode.
@@ -45,6 +48,20 @@ Pinned to tag `b11165` everywhere, via `cbinding.prebuilt("llama")` in `llm-lib/
 
 `n_gpu_layers = 0` (the default) initialises no GPU backend at all; Metal cannot create a
 command queue in a headless simulator test.
+
+### Why those build settings (measured on the arm64 emulator, 1 core, stories15M Q4_0)
+
+| Build | Generation |
+|---|---|
+| 4 threads on 1 core, any build | 0.5 tok/s — spinning workers fight over the core |
+| Debug (`-O0`), 1 thread | 30 tok/s |
+| Release, generic `armv8-a`, 1 thread | 615 tok/s |
+| Release, `armv8.2-a+dotprod+fp16`, 1 thread | 1560 tok/s |
+| This library's debug build, threads auto or 4 | 760–980 tok/s |
+
+Hence `threads = 0` means min(4, online cores), explicit values are capped at the core count,
+and the dot-product build is the default. i8mm (ARMv8.6, newer flagships) is not enabled:
+the emulator lacks it, so its gain is unmeasured.
 
 ## Tests
 

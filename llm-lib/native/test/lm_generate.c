@@ -1,7 +1,7 @@
 /*
  * Host tool: runs one prompt through the shim and reports speed. For trying models and
  * prompt packs on the Mac with the exact code path the apps use.
- * usage: lm_generate <model.gguf> <prompt-file> [max_tokens] [temperature]
+ * usage: lm_generate <model.gguf> <prompt-file> [max_tokens] [temperature] [threads]
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -17,7 +17,7 @@ static double now(void) {
 
 int main(int argc, char** argv) {
     if (argc < 3) {
-        fprintf(stderr, "usage: %s <model.gguf> <prompt-file> [max_tokens] [temperature]\n", argv[0]);
+        fprintf(stderr, "usage: %s <model.gguf> <prompt-file> [max_tokens] [temperature] [threads]\n", argv[0]);
         return 2;
     }
     FILE* f = fopen(argv[2], "rb");
@@ -32,9 +32,10 @@ int main(int argc, char** argv) {
 
     int32_t max_tokens = argc > 3 ? atoi(argv[3]) : 200;
     float temperature = argc > 4 ? (float)atof(argv[4]) : 0.0f;
+    int32_t threads = argc > 5 ? atoi(argv[5]) : 0; /* 0 = the shim's default */
 
     double t0 = now();
-    lm_ctx* c = lm_load(argv[1], 4096, 4, 0);
+    lm_ctx* c = lm_load(argv[1], 4096, threads, 0);
     if (!c) {
         char msg[512];
         int32_t n = lm_load_error(msg, sizeof msg - 1);
