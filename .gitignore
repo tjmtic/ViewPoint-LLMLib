@@ -12,3 +12,6 @@ __pycache__/
 spike/results/*.jsonl
 # Fetched by the sample's asset pack at build time.
 samples/modelpack/src/main/assets/models/
+# iOS sample: generated project and the bundled model (656 MB).
+samples/ios/LlmSample.xcodeproj/
+samples/ios/Models/*.gguf

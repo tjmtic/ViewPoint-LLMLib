@@ -80,6 +80,26 @@ val llm = LlmSession.loadBundled("MiniCPM5-1B-Q4_K_M", config = LlmConfig(contex
 
 Only one tier ships this way: bundling the 2B too would add 1.5 GB to every install.
 
+## iOS on a device
+
+`samples/ios` is the reference app: SwiftUI, the model in Copy Bundle Resources, llama.framework
+linked **and embedded**, and `samples/ios-kit` as its Kotlin framework. It benchmarks
+MiniCPM5-1B on CPU and on Metal and prints `[bench]` lines (load, mapped, prompt and generation
+speed, memory footprint). The project is generated with [XcodeGen](https://github.com/yonaskolb/XcodeGen);
+set your team in `project.yml`, then:
+
+```bash
+cp /path/to/MiniCPM5-1B-Q4_K_M.gguf samples/ios/Models/ && cd samples/ios && xcodegen generate
+```
+
+```bash
+xcodebuild -project samples/ios/LlmSample.xcodeproj -scheme LlmSample -configuration Release -destination 'generic/platform=iOS' -allowProvisioningUpdates build
+```
+
+Install with `xcrun devicectl device install app`, and read the output with
+`xcrun devicectl device process launch --console`. The phone must be unlocked: iOS mounts the
+developer disk image only then.
+
 ## Layout
 
 | Path | What |

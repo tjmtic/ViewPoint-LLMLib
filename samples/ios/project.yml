@@ -1,0 +1,43 @@
+# XcodeGen spec (github.com/yonaskolb/XcodeGen): `xcodegen generate` in this folder writes
+# LlmSample.xcodeproj. The model goes in Models/ (gitignored; see README).
+name: LlmSample
+options:
+  bundleIdPrefix: com.abyxcz.viewpoint.llm
+  deploymentTarget:
+    iOS: "16.4" # llama.xcframework's minimum
+settings:
+  base:
+    DEVELOPMENT_TEAM: SA9RHGG5F8
+    CODE_SIGN_STYLE: Automatic
+targets:
+  LlmSample:
+    type: application
+    platform: iOS
+    sources:
+      - Sources
+      - path: Models
+        buildPhase: resources
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleDisplayName: LLM Sample
+        UILaunchScreen: {}
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.abyxcz.viewpoint.llm.sample
+        FRAMEWORK_SEARCH_PATHS:
+          - "$(SRCROOT)/../ios-kit/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)"
+          - "$(inherited)"
+        OTHER_LDFLAGS: ["-framework", "LlmSampleKit", "-lc++"]
+        ENABLE_USER_SCRIPT_SANDBOXING: NO
+    preBuildScripts:
+      - name: Kotlin framework
+        basedOnDependencyAnalysis: false
+        script: |
+          cd "$SRCROOT/../.."
+          export JAVA_HOME="${JAVA_HOME:-/Applications/Android Studio.app/Contents/jbr/Contents/Home}"
+          ./gradlew :samples:ios-kit:embedAndSignAppleFrameworkForXcode :llm-lib:fetchPrebuiltLlamaIos
+    dependencies:
+      # llama.cpp, dynamic: linked AND embedded (CBindingKMP fetched it from the release asset).
+      - framework: ../../llm-lib/build/cbinding/prebuilt/llama/ios/llama.xcframework
+        embed: true
