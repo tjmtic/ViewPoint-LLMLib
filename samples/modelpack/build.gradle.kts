@@ -3,12 +3,14 @@ import java.security.MessageDigest
 
 plugins { alias(libs.plugins.androidAssetPack) }
 
-// Install-time: the pack arrives with the app, as a split APK read through AssetManager.
-// A single pack may be 1.5 GB (the base module only 500 MB), which is why a 656 MB model
-// lives here and not in the app module.
+// Fast-follow: Play downloads the pack right after the app installs and stores it unpacked in
+// the app's internal storage, so the model is an ordinary file that loads memory-mapped.
+// (An install-time pack stays inside a split APK, where the model's offset moves with every
+// versionCode and cannot be mapped — see the README.) A pack may be 1.5 GB; the base module
+// only 500 MB, which is why a 656 MB model lives here.
 assetPack {
     packName.set("modelpack")
-    dynamicDelivery { deliveryType.set("install-time") }
+    dynamicDelivery { deliveryType.set("fast-follow") }
 }
 
 // The sample ships stories15M (19 MB) in place of MiniCPM5-1B (656 MB): same file layout,

@@ -35,5 +35,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "ViewPoint-LLMLib"
 include(":llm-lib")
+// Optional: models delivered by Google Play asset packs (fast-follow). Android only.
+include(":llm-lib-play")
 // Reference app: ships a model in an install-time Play Asset Delivery pack and loads it in place.
 include(":samples:android", ":samples:modelpack")

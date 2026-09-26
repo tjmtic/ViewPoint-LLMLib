@@ -62,7 +62,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Build (llama.cpp for arm64-v8a + x86_64)
         working-directory: ViewPoint-LLMLib
-        run: ./gradlew :llm-lib:assembleDebug :llm-lib:assembleRelease :samples:android:bundleRelease --console=plain
+        run: ./gradlew :llm-lib:assembleDebug :llm-lib:assembleRelease :llm-lib-play:testDebugUnitTest :samples:android:bundleRelease --console=plain
 
   android-instrumented:
     # x86_64 emulator: the ABI the Mac's arm64 emulator never exercises.

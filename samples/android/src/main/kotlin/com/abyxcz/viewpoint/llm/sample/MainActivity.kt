@@ -6,15 +6,14 @@ import android.os.SystemClock
 import android.util.Log
 import android.widget.TextView
 import com.abyxcz.viewpoint.llm.LlmConfig
-import com.abyxcz.viewpoint.llm.LlmSession
 import com.abyxcz.viewpoint.llm.Sampling
-import com.abyxcz.viewpoint.llm.loadAsset
+import com.abyxcz.viewpoint.llm.play.ModelPack
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 
 /**
- * Loads the model shipped in the install-time asset pack, in place, generates a few tokens and
- * reports how it went: on screen, and in logcat (tag LlmSample) for scripted runs.
+ * Waits for the model Play delivers in the fast-follow pack, loads it memory-mapped, generates a
+ * few tokens and reports how it went: on screen, and in logcat (tag LlmSample) for scripted runs.
  */
 class MainActivity : Activity() {
 
@@ -31,22 +30,27 @@ class MainActivity : Activity() {
     }
 
     private fun run(): String {
+        val pack = ModelPack(this, PACK, MODEL)
         val start = SystemClock.elapsedRealtime()
-        return LlmSession.loadAsset(this, MODEL, LlmConfig(contextTokens = 512)).use { llm ->
-            val loaded = SystemClock.elapsedRealtime()
-            val text = runBlocking {
-                llm.generate(PROMPT, Sampling(maxTokens = 32, temperature = 0f))
-                    .toList()
-                    .joinToString("")
+        val path = runBlocking { pack.awaitPath() }
+        val delivered = SystemClock.elapsedRealtime()
+        return runBlocking { pack.load(LlmConfig(contextTokens = 512)) }
+            .use { llm ->
+                val loaded = SystemClock.elapsedRealtime()
+                val text = runBlocking {
+                    llm.generate(PROMPT, Sampling(maxTokens = 32, temperature = 0f))
+                        .toList()
+                        .joinToString("")
+                }
+                val done = SystemClock.elapsedRealtime()
+                "mapped=${llm.isMemoryMapped} waitMs=${delivered - start} loadMs=${loaded - delivered} " +
+                    "genMs=${done - loaded} path=$path text=${text.replace('\n', ' ')}"
             }
-            val done = SystemClock.elapsedRealtime()
-            "mapped=${llm.isMemoryMapped} loadMs=${loaded - start} genMs=${done - loaded} " +
-                "text=${text.replace('\n', ' ')}"
-        }
     }
 
     private companion object {
         const val TAG = "LlmSample"
+        const val PACK = "modelpack"
         const val MODEL = "models/stories15M-q4_0.gguf"
         const val PROMPT = "Once upon a time"
     }

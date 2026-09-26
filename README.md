@@ -29,28 +29,36 @@ LlmSession.load(modelPath, LlmConfig(contextTokens = 2048)).use { llm ->
 
 The model ships inside the app, not downloaded after install. MiniCPM5-1B Q4_K_M is 656 MB.
 
-**Android.** Google Play caps the base module at 500 MB and a single asset pack at 1.5 GB, so
-put the `.gguf` in an **install-time asset pack** (Play Asset Delivery). It arrives with the
-install, it is read through `AssetManager`, and install-time packs plus modules may total 4 GB.
-Store it uncompressed, and load it in place — no copy on disk:
+**Android: a fast-follow asset pack** (decided 2026-09-25). Google Play caps the base module
+at 500 MB and a pack at 1.5 GB, so the model goes in a Play Asset Delivery pack. With
+**fast-follow**, Play downloads the pack right after the app installs, as part of the install —
+the app never downloads anything itself — and stores it **unpacked in the app's internal
+storage**, so the model is an ordinary file and loads memory-mapped, with no copy.
+`:llm-lib-play` (Android only, so apps outside Play carry no Play dependency) handles it:
 
 ```kotlin
-// the module holding the asset
-android { androidResources { noCompress += "gguf" } }
-
-val llm = LlmSession.loadAsset(context, "models/MiniCPM5-1B-Q4_K_M.gguf", LlmConfig(contextTokens = 2048))
+val pack = ModelPack(context, packName = "modelpack", modelPath = "models/MiniCPM5-1B-Q4_K_M.gguf")
+pack.delivery().collect { state -> /* Downloading(bytes, total) | WaitingForWifi | NeedsConfirmation | Ready(path) | Failed(code) */ }
+val llm = pack.load(LlmConfig(contextTokens = 2048))   // waits for Ready, then loads mapped
 ```
 
-The weights are memory-mapped when their data lands 32-byte aligned inside the APK and are
-read into memory otherwise. **For an install-time pack, plan on the copy.** Measured with
-`samples/` (bundletool 1.18.3, the tool Play builds install APKs with): the pack APK holds the
-compressed pack manifest and then the model, so the model's offset moves with the manifest's
-compressed size — which changes with every versionCode — and it landed 16 bytes off. Output is
-identical; the copy costs load time and model-size of private memory (native heap grew by the
-model's 19 MB in the sample; 656 MB for MiniCPM5-1B). `llm.isMemoryMapped` says which.
+The pack is usually on the device before the app first opens, but not guaranteed: gate the
+LLM features on `delivery()`, never the rest of the app. For `WaitingForWifi` /
+`NeedsConfirmation` call `pack.askToContinue(activity)` (Play's dialog).
 
-`samples/android` + `samples/modelpack` are the reference setup: an install-time pack holding
-the model, `noCompress += "gguf"`, and `loadAsset`. To run it as Play would install it:
+Measured with `samples/` under bundletool 1.18.3 local testing (the delivery Play performs),
+arm64 emulator: the pack was delivered to
+`files/assetpacks/modelpack/1/1/assets/models/…gguf`, loaded **mapped** in 132 ms, same text.
+
+**Why not install-time.** An install-time pack stays inside a split APK. There the model sits
+right after the pack's compressed manifest, which carries the versionCode, so its offset moves
+with every release; in the measured build it landed 16 bytes off the 32-byte alignment llama.cpp
+needs to map. `LlmSession.loadAsset(context, path)` still loads such an asset (stored
+uncompressed: `noCompress += "gguf"`) by reading it into memory — correct output, but
+model-size private memory (656 MB for MiniCPM5-1B) and slower loads. `llm.isMemoryMapped`
+reports which happened. Keep it for small models or non-Play builds.
+
+`samples/android` + `samples/modelpack` are the reference setup. To run them as Play would:
 
 ```bash
 ./gradlew :samples:android:bundleRelease
@@ -60,7 +68,7 @@ the model, `noCompress += "gguf"`, and `loadAsset`. To run it as Play would inst
 java -jar bundletool-all.jar build-apks --bundle=samples/android/build/outputs/bundle/release/android-release.aab --output=sample.apks --local-testing --connected-device --ks=$HOME/.android/debug.keystore --ks-key-alias=androiddebugkey --ks-pass=pass:android && java -jar bundletool-all.jar install-apks --apks=sample.apks
 ```
 
-The app logs `mapped=… loadMs=… genMs=… text=…` under the `LlmSample` tag.
+The app logs `mapped=… waitMs=… loadMs=… genMs=… path=… text=…` under the `LlmSample` tag.
 
 **iOS.** Add the `.gguf` to the app target's Copy Bundle Resources; a bundle resource is an
 ordinary file, so it is always memory-mapped. The App Store allows 4 GB; above 200 MB users on
@@ -81,6 +89,7 @@ Only one tier ships this way: bundling the 2B too would add 1.5 GB to every inst
 | `llm-lib/native/CMakeLists.txt` | Android: llama.cpp from source, static, into `liblmshim.so`. Host: the C tests |
 | `llm-lib/src/commonMain` | `LlmSession`, `LlmConfig`, `Sampling` |
 | `llm-lib/src/androidMain`, `iosMain` | JNI (generated wrappers) / cinterop actuals |
+| `llm-lib-play/` | `ModelPack`: a model in a fast-follow Play asset pack, delivered and loaded mapped (Android) |
 | `llm-lib/src/commonTest` | Real inference against stories260K, run on the iOS simulator and on Android devices |
 | `spike/` | Starpoints prompt pack + runner scoring model tiers on fact fidelity and intents (see `spike/README.md`) |
 
