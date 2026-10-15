@@ -17,6 +17,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    publishing { singleVariant("release") { withSourcesJar() } }
 }
 
 kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17) } }
@@ -27,4 +28,32 @@ dependencies {
     implementation(libs.kotlinx.coroutines.core)
     testImplementation(libs.junit)
     testImplementation(libs.kotlin.test)
+}
+
+// Published beside :llm-lib (same group and version), so an app resolves both from one place.
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            artifactId = "llm-lib-play"
+            afterEvaluate { from(components["release"]) }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/tjmtic/ViewPoint-LLMLib")
+            credentials {
+                username =
+                    System.getenv("GITHUB_ACTOR")
+                        ?: System.getenv("GPR_USER")
+                        ?: findProperty("gpr.user") as String?
+                        ?: ""
+                password =
+                    System.getenv("GITHUB_TOKEN")
+                        ?: System.getenv("GPR_KEY")
+                        ?: findProperty("gpr.key") as String?
+                        ?: ""
+            }
+        }
+    }
 }

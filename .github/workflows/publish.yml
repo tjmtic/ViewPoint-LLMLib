@@ -1,0 +1,53 @@
+name: Publish
+
+# Tag-driven: push vX.Y.Z  ->  com.abyxcz.viewpoint.llm:llm-lib:X.Y.Z (Android + iosArm64 +
+# iosSimulatorArm64) and com.abyxcz.viewpoint.llm:llm-lib-play:X.Y.Z, on GitHub Packages.
+# macOS, because the iOS klibs carry the lm_shim cinterop, which only an Apple host can build.
+# Apps compile this repo from a sibling checkout when they have one; the published artifacts are
+# for builds without one (e.g. an app's Linux CI, where cinterop cannot run).
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g. 0.1.0). Blank = build.gradle.kts default.'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ViewPoint-LLMLib
+    steps:
+      - uses: actions/checkout@v4
+        with: { path: ViewPoint-LLMLib }
+      - uses: actions/checkout@v4
+        with: { repository: tjmtic/CBindingKMP, path: CBindingKMP }
+      - uses: actions/setup-java@v4
+        with: { java-version: '17', distribution: temurin }
+      - uses: gradle/actions/setup-gradle@v4
+      - id: v
+        name: Resolve version
+        run: |
+          if [[ -n "${{ github.event.inputs.version }}" ]]; then V="${{ github.event.inputs.version }}"
+          elif [[ "${{ github.ref }}" == refs/tags/v* ]]; then V="${GITHUB_REF_NAME#v}"
+          else V=""; fi
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          echo "Publishing version: ${V:-<build.gradle.kts default>}"
+      - name: Publish to GitHub Packages
+        run: |
+          ARGS=""
+          [[ -n "${{ steps.v.outputs.version }}" ]] && ARGS="-PlibVersion=${{ steps.v.outputs.version }}"
+          ./gradlew :llm-lib:publishAllPublicationsToGitHubPackagesRepository \
+            :llm-lib-play:publishAllPublicationsToGitHubPackagesRepository $ARGS --console=plain
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
