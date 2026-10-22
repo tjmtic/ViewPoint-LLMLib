@@ -5,6 +5,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <string.h>
 
 #include "llama.h"
@@ -43,7 +44,9 @@ struct lm_ctx {
     struct llama_model* model;
     struct llama_context* ctx;
     const struct llama_vocab* vocab;
-    struct llama_sampler* sampler;
+    struct llama_sampler* sampler;  /* the chain: temperature, top-p, pick */
+    struct llama_sampler* checker;  /* the grammar, kept apart from the chain; NULL = none */
+    llama_token_data* candidates;   /* one per vocabulary token, reused every step */
 
     int32_t remaining; /* tokens this generation may still produce */
     int done;          /* generation finished; lm_next_token returns 0 */
@@ -56,11 +59,20 @@ struct lm_ctx {
 
     char* grammar; /* GBNF applied to each generation; NULL = none */
 
+    /* The last prompt's tokens, which the memory still holds at positions 0..n_kept-1 (the tokens
+       generated after them follow, and are dropped by the next prompt). A prompt that starts the
+       same way re-reads only what differs: see lm_prompt. */
+    llama_token* kept;
+    int32_t n_kept;
+    int32_t reused; /* tokens the last lm_prompt took from memory instead of reading */
+
     FILE* file; /* kept open for a model loaded from a file descriptor */
     int mapped; /* weights are memory-mapped, not copied */
 
     char error[LM_ERROR_CAP];
 };
+
+void lm_free(lm_ctx* c);
 
 /* ---- errors -------------------------------------------------------------------------- */
 
@@ -154,6 +166,12 @@ static lm_ctx* finish_load(struct llama_model* model, FILE* file, int mapped, in
     c->vocab = llama_model_get_vocab(model);
     c->file = file;
     c->mapped = mapped;
+    c->candidates = malloc(sizeof(llama_token_data) * (size_t)llama_vocab_n_tokens(c->vocab));
+    if (!c->candidates) {
+        lm_free(c); /* frees the model and context, and closes the file */
+        set_error(g_load_error, "out of memory");
+        return NULL;
+    }
     c->done = 1;
     return c;
 }
@@ -256,11 +274,40 @@ static void reset_generation(lm_ctx* c) {
         llama_sampler_free(c->sampler);
         c->sampler = NULL;
     }
+    if (c->checker) {
+        llama_sampler_free(c->checker);
+        c->checker = NULL;
+    }
+}
+
+/* Forgets the kept prompt and empties the memory. */
+static void forget_prompt(lm_ctx* c) {
+    llama_memory_clear(llama_get_memory(c->ctx), true);
+    free(c->kept);
+    c->kept = NULL;
+    c->n_kept = 0;
+}
+
+/*
+ * How many leading tokens of the new prompt the memory can keep: the prefix it shares with the
+ * last prompt, less one when the prompts are the same (the last token is read again so the model
+ * produces the first token's odds). Everything after that is removed from the memory; when the
+ * memory cannot remove a tail (some model types cannot), it is emptied and nothing is kept.
+ */
+static int32_t keep_prefix(lm_ctx* c, const llama_token* tokens, int32_t n) {
+    int32_t keep = 0;
+    while (keep < c->n_kept && keep < n && c->kept[keep] == tokens[keep]) keep++;
+    if (keep == n) keep = n - 1;
+    if (keep <= 0 || !llama_memory_seq_rm(llama_get_memory(c->ctx), 0, keep, -1)) {
+        forget_prompt(c);
+        return 0;
+    }
+    return keep;
 }
 
 int32_t lm_prompt(lm_ctx* c, const char* prompt, int32_t max_tokens, float temperature, float top_p, int32_t seed) {
     reset_generation(c);
-    llama_memory_clear(llama_get_memory(c->ctx), true);
+    c->reused = 0;
 
     const int32_t text_len = (int32_t)strlen(prompt);
     int32_t n = -llama_tokenize(c->vocab, prompt, text_len, NULL, 0, true, true);
@@ -282,22 +329,27 @@ int32_t lm_prompt(lm_ctx* c, const char* prompt, int32_t max_tokens, float tempe
         return -2;
     }
 
+    const int32_t keep = keep_prefix(c, tokens, n);
     const int32_t n_batch = (int32_t)llama_n_batch(c->ctx);
-    for (int32_t i = 0; i < n; i += n_batch) {
+    for (int32_t i = keep; i < n; i += n_batch) {
         int32_t chunk = n - i < n_batch ? n - i : n_batch;
         if (llama_decode(c->ctx, llama_batch_get_one(tokens + i, chunk)) != 0) {
             free(tokens);
+            forget_prompt(c);
             set_error(c->error, "evaluating the prompt failed at token %d", i);
             return -3;
         }
     }
-    free(tokens);
+    free(c->kept);
+    c->kept = tokens; /* owned now: the next prompt compares against it */
+    c->n_kept = n;
+    c->reused = keep;
 
+    /* The grammar is not in the chain: checking every vocabulary token against it at every
+       step costs about a second a token on a phone. advance() picks a token first and asks the
+       grammar about that one only (see there). */
     struct llama_sampler* s = llama_sampler_chain_init(llama_sampler_chain_default_params());
-    if (c->grammar) {
-        /* First in the chain: everything after it only sees tokens the grammar allows. */
-        llama_sampler_chain_add(s, llama_sampler_init_grammar(c->vocab, c->grammar, "root"));
-    }
+    if (c->grammar) c->checker = llama_sampler_init_grammar(c->vocab, c->grammar, "root");
     if (temperature <= 0.0f) {
         llama_sampler_chain_add(s, llama_sampler_init_greedy());
     } else {
@@ -313,10 +365,49 @@ int32_t lm_prompt(lm_ctx* c, const char* prompt, int32_t max_tokens, float tempe
     return 0;
 }
 
+/* The last position's odds, loaded into the reusable candidate array. */
+static llama_token_data_array load_candidates(lm_ctx* c) {
+    const float* logits = llama_get_logits_ith(c->ctx, -1);
+    const int32_t n_vocab = llama_vocab_n_tokens(c->vocab);
+    for (int32_t i = 0; i < n_vocab; i++) {
+        c->candidates[i].id = i;
+        c->candidates[i].logit = logits[i];
+        c->candidates[i].p = 0.0f;
+    }
+    llama_token_data_array cur = {c->candidates, (size_t)n_vocab, -1, false};
+    return cur;
+}
+
+/*
+ * The next token. Without a grammar: the chain's pick. With one, the way llama.cpp's own sampling
+ * does it: the chain picks from every token, then the grammar is asked about that token alone;
+ * only when it refuses is the grammar applied to every token and the chain asked again. A greedy
+ * pick is the same either way (the best token the grammar allows); most steps cost one check.
+ */
+static llama_token pick(lm_ctx* c) {
+    llama_token_data_array cur = load_candidates(c);
+    llama_sampler_apply(c->sampler, &cur);
+    llama_token tok = cur.data[cur.selected].id;
+    if (c->checker) {
+        llama_token_data one = {tok, 1.0f, 0.0f};
+        llama_token_data_array single = {&one, 1, -1, false};
+        llama_sampler_apply(c->checker, &single);
+        if (isinf(single.data[0].logit) && single.data[0].logit < 0) {
+            cur = load_candidates(c);
+            llama_sampler_apply(c->checker, &cur);
+            llama_sampler_apply(c->sampler, &cur);
+            tok = cur.data[cur.selected].id;
+        }
+        llama_sampler_accept(c->checker, tok);
+    }
+    llama_sampler_accept(c->sampler, tok);
+    return tok;
+}
+
 /* Samples and evaluates one token, appending its text to pending/tail. 0 = stream ended. */
 static int advance(lm_ctx* c) {
     if (c->remaining <= 0) return 0;
-    llama_token tok = llama_sampler_sample(c->sampler, c->ctx, -1);
+    llama_token tok = pick(c);
     if (llama_vocab_is_eog(c->vocab, tok)) return 0;
 
     char small[256];
@@ -383,10 +474,15 @@ int32_t lm_error(lm_ctx* c, char* out, int32_t cap) {
 void lm_free(lm_ctx* c) {
     if (!c) return;
     if (c->sampler) llama_sampler_free(c->sampler);
+    if (c->checker) llama_sampler_free(c->checker);
+    free(c->candidates);
     free(c->grammar);
+    free(c->kept);
     llama_free(c->ctx);
     llama_model_free(c->model);
     if (c->file) fclose(c->file);
     free(c->pending);
     free(c);
 }
+
+int32_t lm_prompt_reused(lm_ctx* c) { return c->reused; }

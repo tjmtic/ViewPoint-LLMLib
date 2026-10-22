@@ -121,6 +121,37 @@ int main(int argc, char** argv) {
     int32_t lf = generate(c, "Once upon a time", 24, free_text, sizeof free_text, &pf);
     CHECK(lf == la && memcmp(free_text, a, (size_t)la) == 0, "without the grammar, greedy output is back to normal");
 
+    /* Prefix reuse: a prompt that starts like the last one reads only what differs, and writes
+     * exactly what a cold read writes. "cold" is a second context that has read nothing. */
+    {
+        const char* longer = "Once upon a time, there was a little dog";
+        char warm[4096], fresh[4096];
+        int pw, pc;
+        lm_ctx* cold = lm_load(argv[1], 256, 2, 0);
+        CHECK(cold != NULL, "second context");
+        if (cold) {
+            generate(c, "Once upon a time", 24, warm, sizeof warm, &pw);
+            int32_t lw = generate(c, longer, 24, warm, sizeof warm, &pw);
+            int32_t reused = lm_prompt_reused(c);
+            CHECK(reused >= lm_count_tokens(c, "Once upon a time"), "extending the prompt reuses its prefix (%d)", reused);
+            CHECK(reused < lm_count_tokens(c, longer) + 1, "and reads the new part (%d)", reused);
+            int32_t lc = generate(cold, longer, 24, fresh, sizeof fresh, &pc);
+            CHECK(lm_prompt_reused(cold) == 0, "a first prompt reuses nothing");
+            CHECK(lw == lc && memcmp(warm, fresh, (size_t)lw) == 0, "reused prefix, same text:\n[%s]\n[%s]", warm, fresh);
+
+            int32_t again = generate(c, longer, 24, warm, sizeof warm, &pw);
+            CHECK(lm_prompt_reused(c) > reused, "the same prompt again reuses all but its last token (%d)", lm_prompt_reused(c));
+            CHECK(again == lc && memcmp(warm, fresh, (size_t)lc) == 0, "same prompt again, same text");
+
+            int32_t lo = generate(c, "The dog", 16, warm, sizeof warm, &pw);
+            int32_t lco = generate(cold, "The dog", 16, fresh, sizeof fresh, &pc);
+            CHECK(lm_prompt_reused(c) <= 1, "an unrelated prompt reuses at most the start token (%d)", lm_prompt_reused(c));
+            CHECK(lo == lco && memcmp(warm, fresh, (size_t)lo) == 0, "unrelated prompt after reuse, same text");
+            printf("prefix reuse: %d tokens reused, same output as a cold read\n", reused);
+            lm_free(cold);
+        }
+    }
+
     lm_free(c);
     lm_free(NULL);
 

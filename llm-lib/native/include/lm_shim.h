@@ -66,12 +66,22 @@ int32_t lm_set_grammar(lm_ctx* ctx, const char* gbnf);
 
 /*
  * Starts a generation: forgets the previous one, evaluates the prompt (already formatted
- * for the model's chat template; special tokens are parsed), and sets up sampling.
+ * for the model's chat template; special tokens are parsed), and sets up sampling. Only the part
+ * of the prompt after the prefix it shares with the previous prompt is read: the memory keeps the
+ * rest (lm_prompt_reused says how much). The odds are those of reading it all, up to
+ * floating-point rounding: a greedy run on a large model can take a different, equally valid path.
  * temperature <= 0 samples greedily (deterministic). seed < 0 picks a random seed.
  * Returns 0, or a negative code with the reason in lm_error:
  *   -1 prompt does not tokenize, -2 prompt leaves no room in the context, -3 evaluation failed.
  */
 int32_t lm_prompt(lm_ctx* ctx, const char* prompt, int32_t max_tokens, float temperature, float top_p, int32_t seed);
+
+/*
+ * Tokens the last lm_prompt took from the model's memory instead of reading them again: the
+ * prefix it shared with the prompt before (all but its last token when the prompts are the same).
+ * A fixed system turn, say, is read once and then reused. 0 after the first prompt or a failure.
+ */
+int32_t lm_prompt_reused(lm_ctx* ctx);
 
 /*
  * The next piece of generated text. Returns the bytes written; 0 at the end of the stream
