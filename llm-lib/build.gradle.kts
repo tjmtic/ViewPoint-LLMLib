@@ -41,10 +41,20 @@ val llama =
         }
         android {
             // Source, compiled statically into liblmshim.so by native/CMakeLists.txt
-            // (arrives there as CBINDING_LLAMA_DIR).
+            // (arrives there as CBINDING_LLAMA_DIR). Only what that build reads is kept (1,650 of
+            // 3,607 files): tools/ holds a .env.example, and a sandbox that denies reading .env
+            // files cannot snapshot an output directory with one in it.
             archive(
                 url = "https://github.com/ggml-org/llama.cpp/archive/refs/tags/$llamaTag.tar.gz",
                 sha256 = "01d0270e83f3f3d8460a879172d31347b4bd91a4530aecb83fa09b73d5c02c27",
+                "CMakeLists.txt",
+                "LICENSE",
+                "cmake/**",
+                "ggml/**",
+                "include/**",
+                "licenses/**",
+                "src/**",
+                "vendor/**",
             )
         }
     }
