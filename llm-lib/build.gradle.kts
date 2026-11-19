@@ -14,7 +14,7 @@ plugins {
 group = "com.abyxcz.viewpoint.llm"
 
 // Tag-driven: CI passes -PlibVersion from the vX.Y.Z tag; default is the current release.
-version = (project.findProperty("libVersion") as String?) ?: "0.1.0"
+version = (project.findProperty("libVersion") as String?) ?: "0.1.1"
 
 // ---- llama.cpp, pinned to one tag on every platform -------------------------------------
 

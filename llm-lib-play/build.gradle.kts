@@ -6,7 +6,7 @@ plugins {
 
 group = "com.abyxcz.viewpoint.llm"
 
-version = (project.findProperty("libVersion") as String?) ?: "0.1.0"
+version = (project.findProperty("libVersion") as String?) ?: "0.1.1"
 
 // Kept out of :llm-lib so apps not distributed through Google Play carry no Play dependency.
 android {
